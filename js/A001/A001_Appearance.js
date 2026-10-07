@@ -20,10 +20,10 @@
 //    refreshA001Preview 把内容画回来（状态存在节点上，故可无损重绘）。
 //
 //  观感来源（不重造，能引用即引用）：
-//  · 两个框   —— 照抄 A006_VideoNode 的 .xzg-a006-frame 观感参数
+//  · 两个框   —— 沿用容器节点统一的预览框观感参数
 //                （底色 CONTAINER_BG / 圆角 CORNER_RADIUS / 内边距 FRAME_PAD）
-//  · 按键行   —— 照抄 A005_ImageNode.js 底部按键行
-//                （.xzg-a005-bottom-row / .xzg-a005-set / .xzg-a005-run）
+//  · 按键行   —— 沿用容器节点统一的底部按键行
+//                （.xzg-a001-bottom-row / .xzg-a001-set / .xzg-a001-run）
 //  · 图标     —— 沿用 Material Design Icons 类名
 //                （mdi-history / mdi-restore），
 //                该字体由 ComfyUI 全局提供，无需额外引入
@@ -36,7 +36,7 @@
 //                  widgets 投影层隐藏控件后节点内没有网格宿主，框架无法测量槽位；
 //                  该根因已由 A001_grid_anchor.js 解决。）
 //
-//  按键功能：记录 / 还原按键的功能复刻 A006 设置框里的同名功能，
+//  按键功能：记录 / 还原按键实现同名功能（相机快照），
 //  逻辑集中在 A001_workflow.js（attachA001WorkflowButtons 绑定），本模块只负责建键与调用绑定。
 //
 //  日志与安全调用：本模块通过参数注入 alog / safeCall，不反向依赖 A001_SubgraphNode.js，
@@ -61,7 +61,7 @@ import {
 /* ★ 端口：A001 的端口胶囊走独立实现（A001_port_capsule.js + A001_grid_anchor.js，
  *   均由 A001_SubgraphNode.js 装配），不使用公共模块 A000_Port.js 的端口条，
  *   故本模块不导入 floatPortRails / getPanelPortState 等成员。 */
-/* 记录 / 还原（相机快照）：复刻 A006 同功能，实现在 A001_workflow.js。
+/* 记录 / 还原（相机快照）：实现在 A001_workflow.js。
  * 该模块单向依赖 A001_SubgraphNode.js（取 ensureSubgraph / detachSlotSync），
  * 而 A001_Appearance.js 不反向被 A001_workflow.js 引用，故不构成环。 */
 import { attachA001WorkflowButtons } from "./A001_workflow.js?v=20261007a";
@@ -74,22 +74,22 @@ export { A001_FRAME, startA001SizeLock, stopA001SizeLock, resyncA001SizeLock };
 
 /**
  * 控件框内三个按键的尺寸与配色。
- * 取值逐项对齐 A005_shared.js 的 NS 常量表（SET_BTN_* / BTN_*），
- * 保证 A005 / A001 的按键外观一致。
+ * 取值逐项对齐共享层的 NS 常量表（SET_BTN_* / BTN_*），
+ * 保证各节点按键外观一致。
  */
 export const A001_BTN = {
-    GAP: 5,                           // 按键之间的间距（A005 NS.GAP）
-    BTN_H: 30,                        // 运行按钮高（A005 NS.BTN_H）
-    BTN_RADIUS: 15,                   // 运行按钮圆角（A005 NS.BTN_H / 2，胶囊形）
-    BTN_FONT_SIZE: 13,                // 运行按钮字号（A005 NS.BTN_FONT_SIZE）
-    BTN_COLOR: "#1e90ff",             // 运行按钮底色（A005 NS.BTN_COLOR）
-    BTN_HOVER: "#3aa0ff",             // 运行按钮 hover（A005 NS.BTN_HOVER）
-    BTN_FG: "#ffffff",                // 运行按钮文字色（A005 NS.BTN_FG）
-    ICON_BTN_SIZE: 30,                // 圆形图标按键直径（A005 NS.SET_BTN_SIZE）
-    ICON_FONT_SIZE: 17,               // 图标字号（A005 NS.SET_BTN_FONT_SIZE）
-    ICON_BG: "rgba(34,34,34,.92)",    // 图标按键底色（A005 NS.SET_BTN_BG）
-    ICON_BORDER: "rgba(255,255,255,.3)", // 图标按键描边（A005 NS.SET_BTN_BORDER）
-    ICON_FG: "#ffffff",               // 图标按键图标色（A005 NS.TEXT_FG）
+    GAP: 5,                           // 按键之间的间距
+    BTN_H: 30,                        // 运行按钮高
+    BTN_RADIUS: 15,                   // 运行按钮圆角（BTN_H / 2，胶囊形）
+    BTN_FONT_SIZE: 13,                // 运行按钮字号
+    BTN_COLOR: "#1e90ff",             // 运行按钮底色
+    BTN_HOVER: "#3aa0ff",             // 运行按钮 hover
+    BTN_FG: "#ffffff",                // 运行按钮文字色
+    ICON_BTN_SIZE: 30,                // 圆形图标按键直径
+    ICON_FONT_SIZE: 17,               // 图标字号
+    ICON_BG: "rgba(34,34,34,.92)",    // 图标按键底色
+    ICON_BORDER: "rgba(255,255,255,.3)", // 图标按键描边
+    ICON_FG: "#ffffff",               // 图标按键图标色
 };
 
 /** 运行按键「忙碌态」底色：运行中显示为灰蓝，提示再点即取消。
@@ -256,10 +256,10 @@ export function repositionA001Panel(node) {
 /**
  * 在节点内容区插入面板：上方「预览框」+ 下方「控件框」。
  *
- * 【观感来源】照抄 A006_VideoNode 的 .xzg-a006-frame
+ * 【观感来源】沿用容器节点统一的 .xzg-a001-frame
  *   （width:100%; flex:1 1 auto; min-height:0; background:CONTAINER_BG;
  *    border-radius:CORNER_RADIUS; padding:FRAME_PAD）。
- *   A006 另有 .xzg-a006-dom 外层负责左右留白，其 padding 为 0 却内缩外框，
+ *   另有 .xzg-a001-dom 外层负责左右留白，其 padding 为 0 却内缩外框，
  *   这里 A001 无该层，故两个框自身用 width:calc(100% - 2*SIDE_GAP) + margin:0 auto
  *   实现同样的「左右各留 5px」，由 CSS 派生，不读自身尺寸。
  *   外层 .xzg-a001-panel 为 flex column，用 gap 控制两框之间的间距。
@@ -349,8 +349,8 @@ export function ensureA001Panel(node) {
          * 若此处直接 return，面板将永远不被挂载——正是「刷新后框消失」的成因。
          * 故改为自调度重试（scheduleA001PanelRetry：单一链 + 退避间隔 + 图存活判据），
          * 直到 DOM 就绪；该链不再有固定次数上限，节点在图中即持续尝试。
-         * 本机制与 A005 的做法同源（A005_ImageNode.js 的 100ms×15 次重试），
-         * 差异在于 A005 等待的是原生控件、本节点等待的是节点 DOM。
+         * 本机制沿用 100ms×15 次重试的做法，
+         * 差异在于：原实现等待的是原生控件、本节点等待的是节点 DOM。
          *
          * ★ 关键改进：在此处**提前启动面板守卫**（原实现只在挂载成功后才启动）。
          * 若重试链因故停摆（宽限耗尽、定时器被回收、宿主始终未出现），
@@ -733,10 +733,10 @@ function startA001PanelGuard(node) {
  * 构建控件框内的五个按键：隐藏 / 加载开关 / 记录 / 还原 / 运行。
  *
  * 【本轮只做外观，不绑功能】除「隐藏」「运行」外的按键均无点击行为，
- * 仅呈现 A005 的按键样貌。
- * 结构与文案、图标、配色逐项照抄 A005_ImageNode.js 的底部按键行
- *   （.xzg-a005-bottom-row / .xzg-a005-set / .xzg-a005-run），
- * 使两节点的按键视觉一致；图标沿用 Material Design Icons 类名
+ * 仅呈现底部按键行的样貌。
+ * 结构与文案、图标、配色逐项沿用统一的底部按键行
+ *   （.xzg-a001-bottom-row / .xzg-a001-set / .xzg-a001-run），
+ * 使各节点的按键视觉一致；图标沿用 Material Design Icons 类名
  *   （mdi-eye-off / mdi-history / mdi-restore），
  * 该字体由 ComfyUI 全局提供，无需额外引入。
  * 返回值为一行容器（flex row），宽度撑满控件框，由「运行」键自动占据剩余宽度。
@@ -845,7 +845,7 @@ export function buildA001Buttons(node) {
     row.appendChild(loadBtn);
 
     // 记录按键：圆形，图标 mdi-history（排在还原按键之前）
-    // ★ 已绑功能：把当前节点状态记录为一份「相机快照」（复刻 A006 同功能）。
+    // ★ 已绑功能：把当前节点状态记录为一份「相机快照」。
     const recordBtn = document.createElement("button");
     recordBtn.type = "button";
     recordBtn.className = "xzg-a001-btn-icon xzg-a001-btn-record";
@@ -855,7 +855,7 @@ export function buildA001Buttons(node) {
     row.appendChild(recordBtn);
 
     // 还原按键：圆形，图标 mdi-restore
-    // ★ 已绑功能：从记录列表中选择一份快照还原到本节点（复刻 A006 同功能）。
+    // ★ 已绑功能：从记录列表中选择一份快照还原到本节点。
     const resetBtn = document.createElement("button");
     resetBtn.type = "button";
     resetBtn.className = "xzg-a001-btn-icon xzg-a001-btn-reset";
@@ -871,7 +871,7 @@ export function buildA001Buttons(node) {
         "绑定记录/还原按键"
     );
 
-    // 运行按键：胶囊形、flex 撑满剩余宽度（对应 A005 的 .xzg-a005-run）
+    // 运行按键：胶囊形、flex 撑满剩余宽度（对应 .xzg-a001-run）
     const runBtn = document.createElement("button");
     runBtn.type = "button";
     runBtn.className = "xzg-a001-btn-run";
@@ -937,7 +937,7 @@ export function buildA001Buttons(node) {
     return row;
 }
 
-/** 为圆形图标按键统一套用样式与交互（对齐 A005 的 .xzg-a005-txt / .xzg-a005-set）。 */
+/** 为圆形图标按键统一套用样式与交互（对齐 .xzg-a001-txt / .xzg-a001-set）。 */
 function applyA001ButtonStyle(btn) {
     btn.style.cssText = [
         `width:${A001_BTN.ICON_BTN_SIZE}px`,

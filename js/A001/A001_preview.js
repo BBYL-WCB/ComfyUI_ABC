@@ -7,8 +7,7 @@
 //  ── 数据来源（不改后端）────────────────────────────────────────
 //  ComfyUI 执行引擎把子图展开后，内层节点的执行结果照常通过 executed 事件
 //  广播，其 detail.node 形如 "外层节点id:内层节点id"。
-//  判定口径与 A005 / A006 完全一致（实测结论，见 js/A005/A005_exec.js 与
-//  js/A006/A006_exec.js 的 installPreviewRefresh：先按 ":" 切出外层 id 前缀
+//  判定口径遵循 installPreviewRefresh 的实测结论：先按 ":" 切出外层 id 前缀
 //  快速过滤，避免每次事件都遍历全部节点做重解析）。
 //
 //  ── 类型判定 ──────────────────────────────────────────────────
@@ -17,8 +16,7 @@
 //  对应 ComfyTV 的 previewKindOf()（把 images / image 合并为 image）语义。
 //
 //  ── 取址 ──────────────────────────────────────────────────────
-//  走官方 /view 路由（api.apiURL），与 A005_shared.imageDataToUrl /
-//  A006_shared.videoDataToUrl 同款参数，不自造后端代理。
+//  走官方 /view 路由（api.apiURL），图片/视频沿用同一套参数，不自造后端代理。
 //
 //  ── 渲染 ──────────────────────────────────────────────────────
 //  纯原生 DOM（A001 无 Vue 运行时），逐类型对应 ComfyTV MediaPreviewV2.vue 的
@@ -145,7 +143,7 @@ export function a001KindOfOutput(output) {
 
 /** 取该类型对应的首个产物数据对象。
  *  ★ 视频要额外查 images 字段：官方把 mp4/webm/gif 也塞在 ui["images"] 里，
- *    故 video 类型的数据源是 gifs || videos || images（与 A006_exec.js
+ *    故 video 类型的数据源是 gifs || videos || images（与产物字段约定
  *    的 _extractOutputVideos 兜底顺序一致）。 */
 function a001FirstItemOf(output, kind) {
     const pick = (v) => (Array.isArray(v) && v.length ? v[0] : null);
@@ -160,7 +158,7 @@ function a001FirstItemOf(output, kind) {
 
 /**
  * 由后端产物数据构造 /view URL（官方路由，图片/视频/音频统一可访问）。
- * 与 A005_shared.imageDataToUrl / A006_shared.videoDataToUrl 同款参数形态。
+ * 图片/视频沿用同一套参数形态。
  */
 export function a001MediaUrl(data) {
     if (!data) return null;
@@ -247,7 +245,7 @@ function buildImage(url) {
  *   部分浏览器会在元数据/首帧缓冲完成后把播放头前移，故再于 `loadedmetadata`
  *   时把 `currentTime` 钉回 0，并在 `play` 事件之外不做任何主动 `play()` 调用，
  *   确保预览始终停在首帧，需用户手动点击控件才播。
- *   （与 A006_VideoNode.js 的 vidMain/vidCmp 同为「autoplay=false」范式。）
+ *   （与其它容器节点的 vidMain/vidCmp 同为「autoplay=false」范式。）
  *
  * ★ 声音：默认有声、音量 30%，且**只在第一次（首次创建该元素）时**应用 ——
  *   之后用户用控件调过的音量记在 node._a001Volume 上，重建元素时按记忆值恢复，
@@ -524,7 +522,7 @@ export function disposeA001Preview(node) {
  * ══════════════════════════════════════════════ */
 
 /** 把当前预览状态落盘到 node.properties._a001_preview（随工作流保存）。
- *  与 A005_subgraph.js:642-647 / A006_subgraph.js:642-647 同款约定，
+ *  与容器节点子图实现的同款约定，
  *  差别在于 A001 支持四类型，故除媒体对象外还要记 kind 与 text。
  *  只存最小信息（kind + 媒体描述对象 / 文本），不存 DOM、不存已构造的 URL ——
  *  URL 里带 rand 参数与预览格式参数，重启后必须重算，否则指向失效缓存。 */
@@ -564,7 +562,7 @@ export function saveA001Preview(node, state) {
             } else {
                 return;
             }
-            /* ★ 对比内容一并落盘（A001 比 A005/A006 更彻底：那两者只在执行后
+            /* ★ 对比内容一并落盘（比仅在执行后
              *  同批加载对比源，刷新即失去对比；这里随预览一起持久化，重载工作流
              *  后对比仍在）。只存最小描述对象，URL 一律重算（见本函数头注）。 */
             if (state.cmp?.data?.filename) {
@@ -701,7 +699,7 @@ function compareA001InnerId(a, b) {
  *   · 未连线的槽跳过（不占位）——某槽的源未执行时不至于让整个预览变空
  *
  * 取数路径：槽 id → 官方 resolveSubgraphOutputLink（A001_exec.js 已装）→ 内层 feed 节点 id
- *          → 从内层产物累积表按键取出该节点的产物（与 A006 getInnerUiVideos 同构）。
+ *          → 从内层产物累积表按键取出该节点的产物（与 getInnerUiVideos 同构）。
  */
 function resolveA001SlotOutputs(node, maxCount) {
     const sg = node?.subgraph;
@@ -824,7 +822,7 @@ function resolveA001PreviewState(node) {
 /**
  * 把一条 executed 广播应用到可能归属它的 A001 子图节点上。
  *
- * detail.node 形态（与 A005/A006 实测一致）：
+ * detail.node 形态（实测结论）：
  *   · "外层id:内层id"  子图内部节点广播 → 按外层 id 前缀匹配本节点
  *   · "外层id"          容器自身广播
  * 仅当外层 id 命中本节点时才写入，避免误抓其他节点的产物。

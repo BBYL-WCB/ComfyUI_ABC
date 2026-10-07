@@ -5,8 +5,8 @@
 - SubgraphNode：容器节点（node_id="A001_SubgraphNode"）。节点自身不预设任何输入/输出插槽。
 
 本文件只定义节点类与双轨注册映射；注册聚合（comfy_entrypoint / ABCExtension）
-统一在包 __init__.py。记录/还原 API 路由定义在本文件末尾（与 A006_VideoNode.py
-同构，仅换 /a001 前缀与存储目录）。
+统一在包 __init__.py。记录/还原 API 路由定义在本文件末尾（相机快照模式，
+带 /a001 前缀与独立存储目录）。
 """
 
 from __future__ import annotations
@@ -69,7 +69,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
 
 # ---------------------------------------------------------------------------
 # 记录/还原 API：读写 js/A001/A001_Workflow 下的快照 JSON 文件
-# 与 A006_VideoNode.py 同构（相机快照模式），仅换路由前缀与存储目录：
+# 相机快照模式，带专属路由前缀与存储目录：
 #   POST /a001/workflow/save   { title, data } → 写文件，同名自动加数字后缀
 #   GET  /a001/workflow/list                 → 返回 { workflows: [{name,title,mtime}] }
 #   POST /a001/workflow/load   { name }      → 返回文件 JSON 内容
@@ -98,7 +98,7 @@ def _ensure_dir():
 def _resolve_wf_path(name):
     """把请求传入的 name 解析为 WF_DIR 下的真实文件路径。
 
-    先在 basename 层挡掉路径穿越，再用 realpath 前缀校验兜底（与 FeedVideo.execute 同策略），
+    先在 basename 层挡掉路径穿越，再用 realpath 前缀校验兜底，
     防止符号链接等场景绕过 basename。非法返回 None。
     """
     if not isinstance(name, str):

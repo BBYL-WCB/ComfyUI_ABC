@@ -15,7 +15,7 @@
 //
 //  对外提供 uuidv4() / isConstId() / SG_INPUT_NODE_ID / SG_OUTPUT_NODE_ID：
 //  记录/还原（A001_workflow.js）在还原时需重映射子图内部全部 ID，依赖这两项。
-//  实现与 A006_shared.js 同名成员完全一致（子图输入/输出固定 id 为常量不可重映射）。
+//  子图输入/输出固定 id 为常量，不可重映射。
 // ═══════════════════════════════════════════════════════════════
 
 import { app } from "../../../scripts/app.js";
@@ -24,7 +24,7 @@ import { injectStyleOnce } from "../A000/A000_DomStyle.js";
 /** 统一日志前缀（与 A001_SubgraphNode.js 的 TAG 保持一致）。 */
 export const A001_TAG = "[A001 子图节点]";
 
-/** UUID v4（纯前端生成，不需要高熵）。与 A006_shared.js 同名实现一致。 */
+/** UUID v4（纯前端生成，不需要高熵）。 */
 export function uuidv4() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
         const r = (Math.random() * 16) | 0;
@@ -32,7 +32,7 @@ export function uuidv4() {
     });
 }
 
-/** 子图输入/输出节点的固定 id（常量，不可重映射）。取自 A006_shared.js 同款约定。 */
+/** 子图输入/输出节点的固定 id（常量，不可重映射）。 */
 export const SG_INPUT_NODE_ID = -10;
 export const SG_OUTPUT_NODE_ID = -20;
 export const isConstId = (v) => v === SG_INPUT_NODE_ID || v === SG_OUTPUT_NODE_ID;
@@ -107,13 +107,13 @@ export function showA001Toast(text) {
 
 /**
  * 节点面板的尺寸与配色（预览框 + 控件框）。
- * 取值对齐姊妹节点 A006_VideoNode 的常量表
- * （CONTAINER_BG / CORNER_RADIUS / FRAME_PAD），保持 A005/A006/A001 三节点视觉一致。
+ * 取值沿用容器节点统一的常量表
+ * （CONTAINER_BG / CORNER_RADIUS / FRAME_PAD），保持各容器节点视觉一致。
  */
 export const A001_FRAME = {
-    RADIUS: 20,             // 框圆角半径（A006 CORNER_RADIUS）
-    PAD: 5,                 // 框内边距（A006 FRAME_PAD）
-    BG: "#171717",          // 预览框底色（A006 CONTAINER_BG）
+    RADIUS: 20,             // 框圆角半径
+    PAD: 5,                 // 框内边距
+    BG: "#171717",          // 预览框底色
     SIDE_GAP: 5,            // 框与节点左右边缘的间隔
     PREVIEW_MIN_H: 200,     // ★ 预览框最小高度（常驻下限，防止节点压矮时塌成一条线；不设默认高度）
     CONTROLS_H: 40,         // 控件框固定高度（PAD 5 + 按键高 30 + PAD 5 = 40）

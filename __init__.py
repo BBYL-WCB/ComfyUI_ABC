@@ -5,7 +5,7 @@
   2) 导出层：NODE_CLASS_MAPPINGS / NODE_DISPLAY_NAME_MAPPINGS（**前置声明**，
      值为纯字符串 key 或占位 None，不引用任何尚未导入的类）
   3) 基础设施层：comfy_api / typing_extensions（各自 try 兜底）
-  4) 业务层：A000-A006 各模块（各自独立 try，单个模块出错不影响其余节点注册）
+  4) 业务层：A000-A004 各模块（各自独立 try，单个模块出错不影响其余节点注册）
 
 设计要点（对应规范「导出优先声明」+「两段式 try」）：
   · 旧实现把两个 MAPPINGS 写在业务 import 之后，任一模块导入失败 → 整包抛异常 →
@@ -24,10 +24,6 @@ NODE_CLASS_MAPPINGS = {
     "A002_ImageCrop": None,
     "UniversalSlider": None,
     "IgnoreGroup": None,
-    "A005_ImageNode": None,
-    "A005_FeedImage": None,
-    "A006_VideoNode": None,
-    "A006_FeedVideo": None,
     "A001_SubgraphNode": None,
 }
 
@@ -35,10 +31,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "A002_ImageCrop": "002_图片裁剪",
     "UniversalSlider": "003_万能滑条",
     "IgnoreGroup": "004_忽略组",
-    "A005_ImageNode": "005_图片节点",
-    "A005_FeedImage": "005_供图(内部)",
-    "A006_VideoNode": "006_视频节点",
-    "A006_FeedVideo": "006_供视频(内部)",
     "A001_SubgraphNode": "001_子图节点",
 }
 
@@ -103,28 +95,6 @@ except Exception as _e:  # noqa: BLE001
     _warn_import_failure("A004_IgnoreGroup", _e)
 
 try:
-    # 含 A005 记录/还原 HTTP 路由注册
-    from .A005_ImageNode import ImageNode, FeedImage
-
-    NODE_CLASS_MAPPINGS["A005_ImageNode"] = ImageNode
-    NODE_CLASS_MAPPINGS["A005_FeedImage"] = FeedImage
-except Exception as _e:  # noqa: BLE001
-    ImageNode = None
-    FeedImage = None
-    _warn_import_failure("A005_ImageNode", _e)
-
-try:
-    # 含 A006 记录/还原 HTTP 路由注册
-    from .A006_VideoNode import VideoNode, FeedVideo
-
-    NODE_CLASS_MAPPINGS["A006_VideoNode"] = VideoNode
-    NODE_CLASS_MAPPINGS["A006_FeedVideo"] = FeedVideo
-except Exception as _e:  # noqa: BLE001
-    VideoNode = None
-    FeedVideo = None
-    _warn_import_failure("A006_VideoNode", _e)
-
-try:
     # 纯子图容器节点
     from .A001_SubgraphNode import SubgraphNode as A001SubgraphNode
 
@@ -147,7 +117,7 @@ NODE_CLASS_MAPPINGS = {k: v for k, v in NODE_CLASS_MAPPINGS.items() if v is not 
 
 
 class ABCExtension(ComfyExtension if ComfyExtension is not None else object):
-    """聚合 A000-A006 全部 V3 节点的扩展入口。
+    """聚合 A000-A004 全部 V3 节点的扩展入口。
 
     comfy_api 不可用（ComfyExtension 为 None）时退化为普通类，
     仍可由 NODE_CLASS_MAPPINGS 这条轨道完成注册。

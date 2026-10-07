@@ -44,7 +44,7 @@
  *
  * 四、与 A000_Port.js 的关系
  * -----------------------------------------------------------------------------
- * js/A000/A000_Port.js 已复刻了 ComfyTV 的整套端口胶囊机制，A002/A003/A005/A006
+ * js/A000/A000_Port.js 已复刻了 ComfyTV 的整套端口胶囊机制，A002/A003
  * 都在用，但 A001 用不了它：A000_Port.js 的 nudge 是去改 [data-widgets-grid-node-id]
  * 的 paddingBottom，而 A001 的端口区与网格宿主是**兄弟节点**，改 grid 的 padding
  * 不会改变节点自身 size，官方 watcher 不触发（详见调研文档 9.5）。

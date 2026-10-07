@@ -5,13 +5,13 @@
 //  「主内容 vs 对比内容」的对比观感。图像与视频共用同一套外壳。
 //
 //  ── 技术选型（为什么用 DOM + clip-path 而不是 canvas）──────────
-//  A001 预览本身是纯 DOM（<img> / <video>），而 A005 的图像对比走 canvas 重绘
+//  A001 预览本身是纯 DOM（<img> / <video>），而某些节点的图像对比走 canvas 重绘
 //  （drawCompare + 每帧 putImageData）。若在 A001 引入 canvas 管线，需要把
 //  两张图/两个视频都先解码成位图再逐帧重绘，既与现有渲染体系割裂，也会在
-//  视频对比时产生持续的绘制开销。故采用与 A006 视频对比同构的方案：
+//  视频对比时产生持续的绘制开销。故采用纯 DOM 视频对比的方案：
 //  两层同尺寸元素叠加，上层用 clip-path 裁掉分界线左侧，只露出右侧。
-//  分隔条与毛玻璃圆钮改用 DOM 实现（A005 里是 canvas 绘制的 drawFadeLine /
-//  drawGlassHandle，观感参数与之等价，数值直接对齐 A006 的 CSS）。
+//  分隔条与毛玻璃圆钮用 DOM 实现（canvas 方案里是 drawFadeLine /
+//  drawGlassHandle，观感参数与之等价，数值直接对齐统一 CSS）。
 //
 //  ── 依赖方向（严禁反向 import）────────────────────────────────
 //  本模块只依赖 A001_shared.js（依赖图最底层），**不 import A001_preview.js**：
@@ -35,9 +35,9 @@
 import { alog, safeCall } from "./A001_shared.js?v=20261007a";
 import { injectStyleOnce } from "../A000/A000_DomStyle.js";
 
-/** 交互与几何常量（数值对齐 A006_VideoNode.js 的同类实现）。 */
+/** 交互与几何常量（数值对齐容器节点同类实现）。 */
 const COMPARE = {
-    /** 视频主从同步容差（秒）：与 A006 syncCompare 一致。 */
+    /** 视频主从同步容差（秒）：与 syncCompare 一致。 */
     SYNC_TOLERANCE: 0.04,
     /** 分界线吸附半径内视为「未指定滑块位置」时的默认落点比例（中点）。 */
     DEFAULT_RATIO: 0.5,
@@ -45,7 +45,7 @@ const COMPARE = {
 
 const CSS_STYLE_ID = "xzg-a001-compare-style";
 
-/* ─── 样式（观感照抄 A006 的 .xzg-a006-video-cut / .xzg-a006-handle） ─── */
+/* ─── 样式（观感沿用统一的 .xzg-a001-video-cut / .xzg-a001-handle） ─── */
 
 function injectCompareCss() {
     /* 对比层媒体：容器尺寸/位置由 updateA001CompareLayer 逐帧写入 inline style
@@ -57,7 +57,7 @@ function injectCompareCss() {
 /* 分隔条：2px 渐隐竖线（中间实白、上下淡出），随滑块 x 平移 */
 .xzg-a001-mp-cut{position:absolute;top:0;bottom:0;width:2px;pointer-events:none;z-index:3;display:none;transform:translateX(-50%);background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,0.95) 28%,rgba(255,255,255,0.95) 72%,rgba(255,255,255,0))}
 /* 毛玻璃圆钮：backdrop blur + 半透明白底 + 上端高光 + 白描边 + 左右 chevron。
- * 尺寸固定 16px（比 A006 的 32px 小一半，视觉最轻、几乎不遮挡画面）；
+ * 尺寸固定 16px（比传统方案的小一半，视觉最轻、几乎不遮挡画面）；
  * 内部 chevron、留白与描边按 16px 等比收紧（4px 箭头 + 3px 边距 + 1.5px 描边），
  * 沿用 24px 的 7px/4px/2px 会让箭头挤出圆外并互相挤压。 */
 .xzg-a001-mp-handle{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;pointer-events:none;z-index:4;display:none;transform:translate(-50%,-50%);border:1.5px solid rgba(255,255,255,0.95);background:radial-gradient(circle at 50% 22%,rgba(255,255,255,0.32),rgba(255,255,255,0) 70%),rgba(255,255,255,0.16);-webkit-backdrop-filter:blur(9px) saturate(1.5);backdrop-filter:blur(9px) saturate(1.5);box-shadow:0 2px 8px rgba(0,0,0,0.35)}
@@ -114,7 +114,7 @@ function buildCompareMedia(kind, url) {
  *
  * 【为什么必须算】两层都是 object-fit:contain，媒体宽高比与宿主不一致时会留黑边；
  * 若分界线按宿主宽度取百分比，就会飘到黑边上（与画面分界对不上）。
- * 蓝本：A006 updateVideoPreview 用 videoWidth/videoHeight 反算并 clamp。
+ * 蓝本：updateVideoPreview 用 videoWidth/videoHeight 反算并 clamp。
  * 元数据未就绪（尺寸为 0）→ 返回 null，调用方跳过 clamp（不阻断显示）。
  */
 function contentRectOf(el, W, H) {
@@ -139,10 +139,10 @@ function clampNum(v, lo, hi) {
 /**
  * 刷新对比层的裁剪位置与显隐。
  *
- * 显隐规则：**只要存在对比源就常显**分界线与圆钮（与 A005/A006 的「悬停才显示」
+ * 显隐规则：**只要存在对比源就常显**分界线与圆钮（与「悬停才显示」
  * 不同，理由见下），使用户一运行就能看出「这个预览有对比」。
  *
- * 【为什么不照抄 A005/A006 的悬停显示】它们的悬停依赖鼠标事件落到预览元素上，
+ * 【为什么不采用悬停显示】悬停显示依赖鼠标事件落到预览元素上，
  * 而 A001 的预览框有个特殊约束：面板 .xzg-a001-panel 为「不拦截端口/控件交互」
  * 设了 pointer-events:none，该属性可继承，图像元素又是 none，导致图像区域根本
  * 收不到指针事件（video 因自身设了 auto 才恰好可用）。若沿用「悬停才显示」，
@@ -181,7 +181,7 @@ export function updateA001CompareLayer(node, host, cmpState) {
         parts.cmp.style.height = "100%";
         parts.cmp.style.right = "auto";
         parts.cmp.style.bottom = "auto";
-        // 滑块位置：未指定过则落在中点（本地 px）；与 A005/A002 同口径只夹在框内
+        // 滑块位置：未指定过则落在中点（本地 px）；与其它节点同口径只夹在框内
         let cutX = typeof node._a001CmpSliderX === "number"
             ? node._a001CmpSliderX
             : W * COMPARE.DEFAULT_RATIO;
@@ -242,7 +242,7 @@ export function updateA001CompareLayer(node, host, cmpState) {
 
 /**
  * 视频对比播放同步：以主视频为进度轴，对比视频跟随。
- * 短视频播到末尾帧后停留，等主视频走完（与 A006 syncCompare 同款语义）。
+ * 短视频播到末尾帧后停留，等主视频走完（与 syncCompare 同款语义）。
  */
 function syncA001ComparePlayback(node, host) {
     const parts = host?._a001Parts;
@@ -307,7 +307,7 @@ function hookHostResize(node, host) {
     host._a001CmpRO = ro;
 }
 
-/* ─── 交互（悬停显示 + 按住拖拽，复刻 A002 / A005 / A006 的滑动模式） ─── */
+/* ─── 交互（悬停显示 + 按住拖拽，复刻 A002 起的滑动模式） ─── */
 
 /**
  * 把交互绑到宿主上（幂等：每个宿主元素只绑一次）。
@@ -316,7 +316,7 @@ function hookHostResize(node, host) {
  * · 拖动（pointermove）→ 仅在拖拽中实时跟随；
  * · 松开（pointerup / pointercancel）→ 停止跟随；
  * · 离开（pointerleave）→ 仅停止拖拽；分界线与圆钮**常显**（见 updateA001CompareLayer
- *   的说明：A001 预览框受 pointer-events 继承影响，不能照抄 A005/A006 的悬停显隐）。
+ *   的说明：A001 预览框受 pointer-events 继承影响，不能延用悬停显隐）。
  */
 function bindCompareInteractions(node, host) {
     if (!host || host._a001CmpHooked) return;
@@ -342,7 +342,7 @@ function bindCompareInteractions(node, host) {
         /* ★ 视频底部控件条区域不抢占：主视频带 controls（播放/进度/音量），
          *  用户在控件条上按下是想操作播放，若照样吸附拖拽，每次点播放键都会
          *  把分界线吸到点击处 —— 故按控件条高度（约 48px）避让，其余区域
-         *  （画面本体）照常吸附拖拽。蓝本 A006 未做此避让，属本节点的体验改进。
+         *  （画面本体）照常吸附拖拽。属本节点的体验改进。
          *  注意：本条 return 必须早于下面的 stopPropagation —— 控件条要让事件正常上行，
          *  否则播放控件会失去响应。 */
         const main = host._a001Parts?.main;

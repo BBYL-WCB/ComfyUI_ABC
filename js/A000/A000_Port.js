@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 //  A000 端口效果 · 共享模块
-//  · 从 A005 / A006 抽离的「端口悬浮」效果，统一为 xzg-port-* 前缀供两节点复用
+//  · 从容器节点抽离的「端口悬浮」效果，统一为 xzg-port-* 前缀供各节点复用
 //    （聚合胶囊 `.xzg-port-slots` + hover 展开 + 隐藏 tooltip + ComfyTV nudge 锚点）
 //  · 通用签名 floatPortRails(node, g, opts)：
 //      node  —— 当前节点（tick 内存活判定用 opts.alive）

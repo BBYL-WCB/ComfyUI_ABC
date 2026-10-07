@@ -14,7 +14,7 @@ const EXTENSION_NAME = "ABC.IgnoreGroup";
 const NODE_TYPE = "IgnoreGroup";
 
 /** 安全调用：fn 抛错时返回 fallback，异常打印到控制台。
- *  ★ A004 是独立模块，未 import A006_shared 的 safeCall；此处自带一份，
+ *  ★ A004 是独立模块，未 import 共享层 safeCall；此处自带一份，
  *    否则 hideSwitchWidget / scheduleHideSwitchWidget / ensureHideSwitchObserver
  *    调用 safeCall 会抛 ReferenceError（曾导致开关控件无法隐藏，勿删）。 */
 function safeCall(fn, fallback = undefined, label = "safeCall") {

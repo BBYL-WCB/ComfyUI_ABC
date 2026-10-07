@@ -15,12 +15,12 @@
 //  ★ 关键约束：绝不能设置 isVirtualNode=true。
 //    官方 graphToPrompt 中有 `for (let t of e) t.isVirtualNode && t.applyToGraph?.()`，
 //    虚拟节点会被特殊路径处理，容器收不到 executed 广播 → 预览失效。
-//    本结论来自 A005/A006 实测（A005_exec.js / A006_exec.js 同款注释）。
+//    本结论来自实测（同款语义）。
 //
 //  · 内嵌原生子图定义（本节点子图里再放一个官方 SubgraphNode）：
 //    存 properties.embedded_subgraph_defs_json，恢复时 leaf-first 注册
 //    UUID node type，内层 SubgraphNode 才不会变成未知节点。
-//    蓝本：A005_subgraph.js:97-154 / A006_subgraph.js:97-154（本项目同款实现）。
+//    蓝本：容器节点子图实现（本项目同款实现）。
 //    官方能力引用：LGraph.createSubgraph(def) / Subgraph.asSerialisable() /
 //    Subgraph.configure(def) / LGraphNode.isSubgraphNode()。
 //  ═══════════════════════════════════════════════════════════════
@@ -30,7 +30,7 @@ import { alog, safeCall } from "./A001_shared.js?v=20261007a";
 /* ─── 内嵌 ComfyUI 原生子图定义 ─── */
 
 /** 判断某节点是否是一个「活的 ComfyUI 原生子图节点」（SubgraphNode，带 .subgraph）。
- *  与 A005_subgraph.js:100-102 / A006_subgraph.js:100-102 同构。 */
+ *  与容器节点子图实现同构。 */
 function isEmbeddedNativeSubgraphNode(n) {
     return !!n && typeof n.isSubgraphNode === "function" && n.isSubgraphNode() && !!n.subgraph;
 }
@@ -43,7 +43,7 @@ function getSgNodes(sg) {
 
 /** 收集子图内所有内嵌原生子图定义（ExportedSubgraph 数组），递归、按 id 去重。
  *  官方 Subgraph.asSerialisable() 导出，不自造结构。
- *  与 A005_subgraph.js:105-127 同构。 */
+ *  与容器节点子图实现同构。 */
 export function collectEmbeddedSubgraphDefs(subgraph) {
     const defs = [];
     const seen = new Set();
@@ -72,7 +72,7 @@ export function collectEmbeddedSubgraphDefs(subgraph) {
  *  两段式：先全部 createSubgraph 建出来，再统一 configure 灌数据。
  *  若在第一轮就 configure，深层定义自身的 UUID 依赖尚未注册 → 内层节点变未知节点。
  *  官方 LGraph.createSubgraph(def)：能力探测后调用。
- *  与 A005_subgraph.js:130-154 同构。 */
+ *  与容器节点子图实现同构。 */
 export function restoreEmbeddedSubgraphDefs(node, graph, defs) {
     if (!Array.isArray(defs) || !defs.length) return;
     const root = node?.rootGraph || graph?.rootGraph || graph;
@@ -115,7 +115,7 @@ let __a001Rc = null;
 /** 缓存 ExecutableNodeDTO 构造器（若尚未缓存）。
  *  自举策略：官方首次调用时传入的是空 Map，查不到就跳过；
  *  但只要任意一次成功从 Map 中拿到已有 DTO，其 constructor 即被缓存复用。
- *  与 A005_exec.js:37-43 / A006_exec.js:51-57 同构。 */
+ *  与容器节点执行展开实现同构。 */
 function tryCacheRcCtor(nodesByExecutionId, nodeId) {
     if (__a001Rc) return __a001Rc;
     if (typeof nodesByExecutionId?.get !== "function") return null;
@@ -144,7 +144,7 @@ export function attachExecutionHooks(node) {
 
     /** 把输出插槽映射到子图内部喂给 outputNode 的节点与链路。
      *  用于「该显示哪个内层节点的产物」的精确溯源。
-     *  与 A005_exec.js:63-93 同构，仅私有标记改为 _a001SubgraphSlotId。 */
+     *  与容器节点执行展开实现同构，仅私有标记改为 _a001SubgraphSlotId。 */
     node.resolveSubgraphOutputLink = function (slotRef) {
         const sub = this.subgraph;
         const slots = sub?.outputNode?.slots;
@@ -179,7 +179,7 @@ export function attachExecutionHooks(node) {
 
     /** 展开子图内部所有节点（含嵌套 A001 与虚拟 io 节点）为 ExecutableNodeDTO。
      *  四个参数全部给默认值，保证官方任何调用形态都不炸。
-     *  与 A005_exec.js:96-150 同构。 */
+     *  与容器节点执行展开实现同构。 */
     node.getInnerNodes = function (
         nodesByExecutionId = new Map(),
         subgraphNodePath = [],

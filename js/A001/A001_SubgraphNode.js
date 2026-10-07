@@ -934,7 +934,7 @@ function unbindAllOfficialPromotedWidgets(node) {
  *
  *  ★ 本节旧实现（冲突检测 + 蛇形取号 + 数据重映射，共 13 个函数与 3 个常量）已整体移除：
  *    它针对 properties 里「已落盘的 JSON 字符串」做重映射，是早期方案的残留，全文件零调用点
- *    （本节函数均未 export；grep 命中的同名函数属 A005/A006 各自的独立实现，与此处无关）。
+ *    （本节函数均未 export，仅供本模块内部使用）。
  *    现役实现见下方 remapA001ClipboardData —— 直接对剪贴板数据（而非 properties 字符串）重映射。
  * ════════════════════════════════════════════════ */
 /* ─── 创建/恢复子图 ─── */
@@ -944,7 +944,7 @@ function unbindAllOfficialPromotedWidgets(node) {
  * 幂等：已存在非空子图时不会重复创建。
  * 全流程复用官方能力：createSubgraph(def) 建 → configure(def) 灌数据。
  *
- * opts.force（复刻 A006_workflow.js applySnapshotToNode 的强制重建语义）：
+ * opts.force（复刻 applySnapshotToNode 的强制重建语义）：
  *  · false（默认）—— 保持原幂等行为：已有非空子图时仅做插槽同步/提升重建后返回，
  *    不销毁、不重建（工作流切换/反序列化路径依赖此行为）。
  *  · true —— 无条件销毁当前子图并按 properties.subgraph_data_json 重建，
@@ -1000,7 +1000,7 @@ export function ensureSubgraph(node, opts = {}) {
     const data = _prepareSubgraphData(node, saved);
 
     /* ★ 复制粘贴 ID 冲突检测 → 整体重映射（槽/节点/连线/分组/reroute + 计数器
-     *   + 外层端口标记 + 内嵌子图定义）。蓝本：A005_subgraph.js:600-616。
+     *   + 外层端口标记 + 内嵌子图定义）。
      *  必须在 createSubgraph / configure 之前完成：官方据此建图并解析 node.id，
      *  晚于此则画布标签已按旧 ID 建好，重映射只能改数据、改不动已建实例。 */
     _remapSubgraphOnIdConflict(node, data);
@@ -1009,7 +1009,7 @@ export function ensureSubgraph(node, opts = {}) {
      * （ExportedSubgraph 数组）先 leaf-first 注册进 rootGraph，
      * 否则 configure 灌数据时遇到 UUID node type 的内层 SubgraphNode
      * 会因定义未注册而变成未知节点（「节点内部的子图无法识别」根因）。
-     * 蓝本：A005_subgraph.js:608-615。 */
+     */
     _restoreEmbeddedDefsBeforeCreate(node, graph);
 
     // 官方 LGraph.createSubgraph(def)
@@ -1154,7 +1154,7 @@ import {
     remapSubgraphOnIdConflict as _remapSubgraphOnIdConflict,
 } from "./A001_remap.js?v=20261007a";
 
-/* re-export：外部（A005/A006 同构实现、测试脚本）可能按原名引用。 */
+/* re-export：外部（测试脚本等）可能按原名引用。 */
 export { remapA001ClipboardData };
 
 /** 建图前把内嵌原生子图定义（ExportedSubgraph 数组）leaf-first 注册进 rootGraph，
@@ -1838,7 +1838,7 @@ queueMicrotask(() => {
     /* 模块加载即安装全局预览监听（executed / execution_cached）。
      * 内部自检 window.__a001ExecutedHooked，重复调用无副作用。
      * 参考官方前端事件总线：api.addEventListener 挂在全局 api 事件流上，
-     * 与 A005/A006 预览采用同一范式（未逐行引用，原因：压缩产物）。 */
+     * 与容器节点预览采用同一范式（未逐行引用，原因：压缩产物）。 */
     installA001PreviewRefresh();
 });
 
@@ -2121,7 +2121,7 @@ app.registerExtension({
         /* 内嵌原生子图定义收集（两条序列化路径共用）。
          * ★ 本节点子图里若再放了官方 SubgraphNode，其定义不会随 subgraph_data_json
          *   一起走（那是本层子图的导出），必须单独收集为 ExportedSubgraph 数组落盘，
-         *   恢复时 leaf-first 注册。蓝本：A005_ImageNode.js:773-787。 */
+         *   恢复时 leaf-first 注册。 */
         const putA001EmbeddedDefs = (self, target) => {
             safeCall(
                 () => {
