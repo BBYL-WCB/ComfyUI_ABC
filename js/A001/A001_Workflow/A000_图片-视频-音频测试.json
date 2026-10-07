@@ -1,0 +1,167 @@
+{
+  "format": "a001_camera_snapshot",
+  "version": 2,
+  "capturedAt": 1791342015639,
+  "node": {
+    "type": "A001_SubgraphNode",
+    "size": [
+      469.8258384939176,
+      538
+    ],
+    "flags": {},
+    "order": 5,
+    "mode": 0,
+    "inputs": [
+      {
+        "label": "使用图片",
+        "localized_name": "switch",
+        "name": "switch",
+        "type": "BOOLEAN",
+        "widget": {
+          "name": "switch"
+        },
+        "link": null
+      },
+      {
+        "label": "使用视频",
+        "localized_name": "switch_1",
+        "name": "switch_1",
+        "type": "BOOLEAN",
+        "widget": {
+          "name": "switch_1"
+        },
+        "link": null
+      },
+      {
+        "label": "使用音频",
+        "localized_name": "switch_2",
+        "name": "switch_2",
+        "type": "BOOLEAN",
+        "widget": {
+          "name": "switch_2"
+        },
+        "link": null
+      }
+    ],
+    "outputs": [
+      {
+        "label": "images",
+        "localized_name": "images",
+        "name": "images",
+        "type": "IMAGE",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "images_1",
+        "localized_name": "images_1",
+        "name": "images_1",
+        "type": "IMAGE",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "video",
+        "localized_name": "video",
+        "name": "video",
+        "type": "VIDEO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "video_1",
+        "localized_name": "video_1",
+        "name": "video_1",
+        "type": "VIDEO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "audio",
+        "localized_name": "audio",
+        "name": "audio",
+        "type": "AUDIO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "audio_1",
+        "localized_name": "audio_1",
+        "name": "audio_1",
+        "type": "AUDIO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "audio_2",
+        "localized_name": "audio_2",
+        "name": "audio_2",
+        "type": "AUDIO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "audio_3",
+        "localized_name": "audio_3",
+        "name": "audio_3",
+        "type": "AUDIO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      },
+      {
+        "label": "audio_4",
+        "localized_name": "audio_4",
+        "name": "audio_4",
+        "type": "AUDIO",
+        "pos": [
+          469.8258384939176,
+          232.0074033294685
+        ],
+        "links": null
+      }
+    ],
+    "title": "A000_图片-视频-音频测试",
+    "properties": {
+      "subgraph_data_json": "{\"id\":\"ab9474b2-c4c7-4413-a5bf-6263560e3e0d\",\"version\":1,\"state\":{\"lastGroupId\":1012,\"lastNodeId\":999949,\"lastLinkId\":1000000,\"lastRerouteId\":1079},\"revision\":0,\"config\":{},\"name\":\"A000_图片-视频-音频测试\",\"description\":\"容器节点的内部子图空间\",\"inputNode\":{\"id\":-10,\"bounding\":[-1058.500931021692,-33.16828530449445,128,108]},\"outputNode\":{\"id\":-20,\"bounding\":[2298.3617310359004,309.85218690545673,128,228]},\"inputs\":[{\"id\":\"21d4d0e1-0c68-46d0-83c9-cb7d9c990069\",\"name\":\"switch\",\"type\":\"BOOLEAN\",\"linkIds\":[999890],\"label\":\"使用图片\",\"pos\":[-954.5009310216919,-9.168285304494447]},{\"id\":\"35ee15b1-3ddc-4edb-8d77-b651ca776810\",\"name\":\"switch_1\",\"type\":\"BOOLEAN\",\"linkIds\":[999889],\"label\":\"使用视频\",\"pos\":[-954.5009310216919,10.831714695505553]},{\"id\":\"b737774f-8e32-4085-9959-270b14c6bc31\",\"name\":\"switch_2\",\"type\":\"BOOLEAN\",\"linkIds\":[999888],\"label\":\"使用音频\",\"pos\":[-954.5009310216919,30.831714695505553]}],\"outputs\":[{\"id\":\"cff2b7ae-9f58-4f69-bfc5-b17ac1ef9417\",\"name\":\"images\",\"type\":\"IMAGE\",\"linkIds\":[999908],\"pos\":[2322.3617310359004,333.85218690545673]},{\"id\":\"39cea30e-7c84-4f61-8912-bb9006424b7f\",\"name\":\"images_1\",\"type\":\"IMAGE\",\"linkIds\":[999905],\"pos\":[2322.3617310359004,353.85218690545673]},{\"id\":\"16ee16e8-eeb3-4321-8ef9-e3f83f0a69b4\",\"name\":\"video\",\"type\":\"VIDEO\",\"linkIds\":[999899],\"pos\":[2322.3617310359004,373.85218690545673]},{\"id\":\"e4c87c94-0d1c-4664-8e0a-3acbc021777f\",\"name\":\"video_1\",\"type\":\"VIDEO\",\"linkIds\":[999898],\"pos\":[2322.3617310359004,393.85218690545673]},{\"id\":\"112c4991-d617-44c7-9d8e-490266ab1081\",\"name\":\"audio\",\"type\":\"AUDIO\",\"linkIds\":[999897],\"pos\":[2322.3617310359004,413.85218690545673]},{\"id\":\"3c80ff71-760e-4e85-9d4f-4b7fd9fb193c\",\"name\":\"audio_1\",\"type\":\"AUDIO\",\"linkIds\":[999896],\"pos\":[2322.3617310359004,433.85218690545673]},{\"id\":\"5080f805-9d50-4056-9adb-c0be67ad52a9\",\"name\":\"audio_2\",\"type\":\"AUDIO\",\"linkIds\":[999895],\"pos\":[2322.3617310359004,453.85218690545673]},{\"id\":\"cf010495-1752-494f-86f9-f71bc9915516\",\"name\":\"audio_3\",\"type\":\"AUDIO\",\"linkIds\":[999894],\"pos\":[2322.3617310359004,473.85218690545673]},{\"id\":\"ed17f697-f19e-43d3-982f-21a9ceeb8b6f\",\"name\":\"audio_4\",\"type\":\"AUDIO\",\"linkIds\":[999893],\"pos\":[2322.3617310359004,493.85218690545673]}],\"widgets\":[],\"nodes\":[{\"id\":999949,\"type\":\"PreviewImage\",\"pos\":[-71.52785557714874,-1089.7041835743312],\"size\":[225,270],\"flags\":{},\"order\":9,\"mode\":0,\"inputs\":[{\"label\":\"图像组\",\"localized_name\":\"图像\",\"name\":\"images\",\"type\":\"IMAGE\",\"link\":999907}],\"outputs\":[{\"localized_name\":\"images\",\"name\":\"images\",\"type\":\"IMAGE\",\"links\":[999908]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewImage\"}},{\"id\":999948,\"type\":\"LoadImage\",\"pos\":[-568.3405473951725,-1118.0012616096],\"size\":[270,326],\"flags\":{},\"order\":0,\"mode\":0,\"inputs\":[{\"localized_name\":\"图像\",\"name\":\"image\",\"type\":\"COMBO\",\"widget\":{\"name\":\"image\"},\"link\":null},{\"localized_name\":\"上传\",\"name\":\"upload\",\"type\":\"IMAGEUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"IMAGE\",\"type\":\"IMAGE\",\"links\":[999907]},{\"label\":\"遮罩\",\"localized_name\":\"遮罩\",\"name\":\"MASK\",\"type\":\"MASK\",\"links\":null}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadImage\"},\"widgets_values\":[\"ComfyUI_00001_.png\",\"image\"],\"widgets_values_named\":{\"image\":\"ComfyUI_00001_.png\",\"upload\":\"image\"}},{\"id\":999947,\"type\":\"PreviewImage\",\"pos\":[-154.7649749559262,-705.7612850634844],\"size\":[225,270],\"flags\":{},\"order\":10,\"mode\":0,\"inputs\":[{\"label\":\"图像组\",\"localized_name\":\"图像\",\"name\":\"images\",\"type\":\"IMAGE\",\"link\":999906}],\"outputs\":[{\"localized_name\":\"images\",\"name\":\"images\",\"type\":\"IMAGE\",\"links\":[999905]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewImage\"}},{\"id\":999946,\"type\":\"LoadImage\",\"pos\":[-563.8944549070667,-693.5801678769078],\"size\":[270,326],\"flags\":{},\"order\":1,\"mode\":0,\"inputs\":[{\"localized_name\":\"图像\",\"name\":\"image\",\"type\":\"COMBO\",\"widget\":{\"name\":\"image\"},\"link\":null},{\"localized_name\":\"上传\",\"name\":\"upload\",\"type\":\"IMAGEUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"IMAGE\",\"type\":\"IMAGE\",\"links\":[999906]},{\"label\":\"遮罩\",\"localized_name\":\"遮罩\",\"name\":\"MASK\",\"type\":\"MASK\",\"links\":null}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadImage\"},\"widgets_values\":[\"ComfyUI_00002_.png\",\"image\"],\"widgets_values_named\":{\"image\":\"ComfyUI_00002_.png\",\"upload\":\"image\"}},{\"id\":999945,\"type\":\"IgnoreGroup\",\"pos\":[214.82228486046142,-520.1407618969884],\"size\":[288.4375,179.6875],\"flags\":{},\"order\":20,\"mode\":0,\"inputs\":[{\"localized_name\":\"switch\",\"name\":\"switch\",\"type\":\"BOOLEAN\",\"widget\":{\"name\":\"switch\"},\"link\":999890}],\"outputs\":[],\"properties\":{\"Node name for S&R\":\"IgnoreGroup\"}},{\"id\":999944,\"type\":\"LoadAudio\",\"pos\":[-614.344746216711,1153.8645203995127],\"size\":[399.3151662323683,136],\"flags\":{},\"order\":2,\"mode\":4,\"inputs\":[{\"label\":\"音频文件\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"audio\"},\"link\":null},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null},{\"localized_name\":\"选择文件上传\",\"name\":\"upload\",\"type\":\"AUDIOUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"AUDIO\",\"type\":\"AUDIO\",\"links\":[999904]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadAudio\"},\"widgets_values\":[\"ComfyUI_00001_.flac\",null],\"widgets_values_named\":{\"audio\":\"ComfyUI_00001_.flac\",\"upload\":null}},{\"id\":999943,\"type\":\"LoadVideo\",\"pos\":[-567.5086067730647,88.92226821470199],\"size\":[270,306],\"flags\":{},\"order\":3,\"mode\":4,\"inputs\":[{\"localized_name\":\"文件\",\"name\":\"file\",\"type\":\"COMBO\",\"widget\":{\"name\":\"file\"},\"link\":null},{\"localized_name\":\"选择要上传的文件\",\"name\":\"upload\",\"type\":\"IMAGEUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"视频\",\"localized_name\":\"视频\",\"name\":\"VIDEO\",\"type\":\"VIDEO\",\"links\":[999892]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadVideo\"},\"widgets_values\":[\"ComfyUI_00021_.mp4\",\"image\"],\"widgets_values_named\":{\"file\":\"ComfyUI_00021_.mp4\",\"upload\":\"image\"}},{\"id\":999942,\"type\":\"PreviewAudio\",\"pos\":[3.7013434584403235,1159.2663794491707],\"size\":[270,106],\"flags\":{},\"order\":11,\"mode\":4,\"inputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"AUDIO\",\"link\":999904},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"audio\",\"name\":\"audio\",\"type\":\"AUDIO\",\"links\":[999897]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewAudio\"},\"widgets_values\":[],\"widgets_values_named\":{}},{\"id\":999941,\"type\":\"LoadAudio\",\"pos\":[-597.1861714947503,1366.6090515430476],\"size\":[382.80104236553,136],\"flags\":{},\"order\":4,\"mode\":4,\"inputs\":[{\"label\":\"音频文件\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"audio\"},\"link\":null},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null},{\"localized_name\":\"选择文件上传\",\"name\":\"upload\",\"type\":\"AUDIOUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"AUDIO\",\"type\":\"AUDIO\",\"links\":[999903]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadAudio\"},\"widgets_values\":[\"ComfyUI_00001_.flac\",null],\"widgets_values_named\":{\"audio\":\"ComfyUI_00001_.flac\",\"upload\":null}},{\"id\":999940,\"type\":\"PreviewAudio\",\"pos\":[7.961326531761543,1360.1872015814538],\"size\":[270,106],\"flags\":{},\"order\":13,\"mode\":4,\"inputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"AUDIO\",\"link\":999903},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"audio\",\"name\":\"audio\",\"type\":\"AUDIO\",\"links\":[999896]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewAudio\"},\"widgets_values\":[],\"widgets_values_named\":{}},{\"id\":999939,\"type\":\"SaveVideo\",\"pos\":[39.35532530620762,68.23306937225952],\"size\":[270,130],\"flags\":{},\"order\":12,\"mode\":4,\"inputs\":[{\"label\":\"视频\",\"localized_name\":\"视频\",\"name\":\"video\",\"type\":\"VIDEO\",\"link\":999892},{\"label\":\"文件名前缀\",\"localized_name\":\"文件名前缀\",\"name\":\"filename_prefix\",\"type\":\"STRING\",\"widget\":{\"name\":\"filename_prefix\"},\"link\":null},{\"label\":\"格式\",\"localized_name\":\"格式\",\"name\":\"format\",\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"format\"},\"link\":null},{\"localized_name\":\"编解码器\",\"name\":\"format.codec\",\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"format.codec\"},\"link\":null},{\"label\":\"编解码器\",\"localized_name\":\"编码器\",\"name\":\"codec\",\"shape\":7,\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"codec\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"video\",\"name\":\"video\",\"type\":\"VIDEO\",\"links\":[999899]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\"},\"widgets_values\":[\"video/ComfyUI\",\"auto\",\"auto\",\"auto\"],\"widgets_values_named\":{\"filename_prefix\":\"video/ComfyUI\",\"format\":\"auto\",\"format.codec\":\"auto\",\"codec\":\"auto\"}},{\"id\":999938,\"type\":\"IgnoreGroup\",\"pos\":[460.8212475391025,1219.8735551329094],\"size\":[288.4375,179.6875],\"flags\":{},\"order\":19,\"mode\":4,\"inputs\":[{\"localized_name\":\"switch\",\"name\":\"switch\",\"type\":\"BOOLEAN\",\"widget\":{\"name\":\"switch\"},\"link\":999888}],\"outputs\":[],\"properties\":{\"Node name for S&R\":\"IgnoreGroup\"}},{\"id\":999937,\"type\":\"LoadVideo\",\"pos\":[-571.4064850024213,506.7287861487764],\"size\":[270,306],\"flags\":{},\"order\":5,\"mode\":4,\"inputs\":[{\"localized_name\":\"文件\",\"name\":\"file\",\"type\":\"COMBO\",\"widget\":{\"name\":\"file\"},\"link\":null},{\"localized_name\":\"选择要上传的文件\",\"name\":\"upload\",\"type\":\"IMAGEUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"视频\",\"localized_name\":\"视频\",\"name\":\"VIDEO\",\"type\":\"VIDEO\",\"links\":[999891]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadVideo\"},\"widgets_values\":[\"ComfyUI_00022_.mp4\",\"image\"],\"widgets_values_named\":{\"file\":\"ComfyUI_00022_.mp4\",\"upload\":\"image\"}},{\"id\":999936,\"type\":\"SaveVideo\",\"pos\":[79.58524047463727,527.8448652621316],\"size\":[270,130],\"flags\":{},\"order\":14,\"mode\":4,\"inputs\":[{\"label\":\"视频\",\"localized_name\":\"视频\",\"name\":\"video\",\"type\":\"VIDEO\",\"link\":999891},{\"label\":\"文件名前缀\",\"localized_name\":\"文件名前缀\",\"name\":\"filename_prefix\",\"type\":\"STRING\",\"widget\":{\"name\":\"filename_prefix\"},\"link\":null},{\"label\":\"格式\",\"localized_name\":\"格式\",\"name\":\"format\",\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"format\"},\"link\":null},{\"localized_name\":\"编解码器\",\"name\":\"format.codec\",\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"format.codec\"},\"link\":null},{\"label\":\"编解码器\",\"localized_name\":\"编码器\",\"name\":\"codec\",\"shape\":7,\"type\":\"COMFY_DYNAMICCOMBO_V3\",\"widget\":{\"name\":\"codec\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"video\",\"name\":\"video\",\"type\":\"VIDEO\",\"links\":[999898]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\"},\"widgets_values\":[\"video/ComfyUI\",\"auto\",\"auto\",\"auto\"],\"widgets_values_named\":{\"filename_prefix\":\"video/ComfyUI\",\"format\":\"auto\",\"format.codec\":\"auto\",\"codec\":\"auto\"}},{\"id\":999935,\"type\":\"IgnoreGroup\",\"pos\":[46.907634706919396,276.26603423871893],\"size\":[288.4375,179.6875],\"flags\":{},\"order\":18,\"mode\":4,\"inputs\":[{\"localized_name\":\"switch\",\"name\":\"switch\",\"type\":\"BOOLEAN\",\"widget\":{\"name\":\"switch\"},\"link\":999889}],\"outputs\":[],\"properties\":{\"Node name for S&R\":\"IgnoreGroup\"}},{\"id\":999934,\"type\":\"LoadAudio\",\"pos\":[-576.4810132909413,1581.5154398186264],\"size\":[365.34202485697585,136],\"flags\":{},\"order\":6,\"mode\":4,\"inputs\":[{\"label\":\"音频文件\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"audio\"},\"link\":null},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null},{\"localized_name\":\"选择文件上传\",\"name\":\"upload\",\"type\":\"AUDIOUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"AUDIO\",\"type\":\"AUDIO\",\"links\":[999902]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadAudio\"},\"widgets_values\":[\"ComfyUI_00001_.flac\",null],\"widgets_values_named\":{\"audio\":\"ComfyUI_00001_.flac\",\"upload\":null}},{\"id\":999933,\"type\":\"PreviewAudio\",\"pos\":[24.25398402083487,1583.45508039561],\"size\":[270,106],\"flags\":{},\"order\":15,\"mode\":4,\"inputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"AUDIO\",\"link\":999902},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"audio\",\"name\":\"audio\",\"type\":\"AUDIO\",\"links\":[999895]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewAudio\"},\"widgets_values\":[],\"widgets_values_named\":{}},{\"id\":999932,\"type\":\"LoadAudio\",\"pos\":[-565.5313737551035,1769.8397933123606],\"size\":[353.2242602026136,136],\"flags\":{},\"order\":7,\"mode\":4,\"inputs\":[{\"label\":\"音频文件\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"audio\"},\"link\":null},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null},{\"localized_name\":\"选择文件上传\",\"name\":\"upload\",\"type\":\"AUDIOUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"AUDIO\",\"type\":\"AUDIO\",\"links\":[999901]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadAudio\"},\"widgets_values\":[\"ComfyUI_00001_.flac\",null],\"widgets_values_named\":{\"audio\":\"ComfyUI_00001_.flac\",\"upload\":null}},{\"id\":999931,\"type\":\"PreviewAudio\",\"pos\":[42.166235541106516,1770.7701526840658],\"size\":[270,106],\"flags\":{},\"order\":16,\"mode\":4,\"inputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"AUDIO\",\"link\":999901},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"audio\",\"name\":\"audio\",\"type\":\"AUDIO\",\"links\":[999894]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewAudio\"},\"widgets_values\":[],\"widgets_values_named\":{}},{\"id\":999930,\"type\":\"LoadAudio\",\"pos\":[-556.5557161564261,1948.1512262861174],\"size\":[339.3753863119139,136],\"flags\":{},\"order\":8,\"mode\":4,\"inputs\":[{\"label\":\"音频文件\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"audio\"},\"link\":null},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null},{\"localized_name\":\"选择文件上传\",\"name\":\"upload\",\"type\":\"AUDIOUPLOAD\",\"widget\":{\"name\":\"upload\"},\"link\":null}],\"outputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"AUDIO\",\"type\":\"AUDIO\",\"links\":[999900]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"LoadAudio\"},\"widgets_values\":[\"ComfyUI_00001_.flac\",null],\"widgets_values_named\":{\"audio\":\"ComfyUI_00001_.flac\",\"upload\":null}},{\"id\":999929,\"type\":\"PreviewAudio\",\"pos\":[73.60813817308758,1946.6286483904262],\"size\":[270,106],\"flags\":{},\"order\":17,\"mode\":4,\"inputs\":[{\"label\":\"音频\",\"localized_name\":\"音频\",\"name\":\"audio\",\"type\":\"AUDIO\",\"link\":999900},{\"localized_name\":\"音频UI\",\"name\":\"audioUI\",\"type\":\"AUDIO_UI\",\"widget\":{\"name\":\"audioUI\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"audio\",\"name\":\"audio\",\"type\":\"AUDIO\",\"links\":[999893]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewAudio\"},\"widgets_values\":[],\"widgets_values_named\":{}}],\"groups\":[{\"id\":1010,\"title\":\"Group\",\"bounding\":[-689.4119818673844,-1212.3257217292037,1451.6924275827562,930.4275818345609],\"color\":\"#3f789e\",\"flags\":{}},{\"id\":1011,\"title\":\"Group\",\"bounding\":[-688.3522404103036,998.7067188559988,1541.6869109562028,1214.1890747310026],\"color\":\"#3f789e\",\"flags\":{}},{\"id\":1012,\"title\":\"Group\",\"bounding\":[-701.7597208340437,-63.15567406574189,1215.3246496407928,934.6856826518615],\"color\":\"#3f789e\",\"flags\":{}}],\"links\":[{\"id\":999908,\"origin_id\":999949,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":999907,\"origin_id\":999948,\"origin_slot\":0,\"target_id\":999949,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":999906,\"origin_id\":999946,\"origin_slot\":0,\"target_id\":999947,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":999905,\"origin_id\":999947,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":1,\"type\":\"IMAGE\"},{\"id\":999904,\"origin_id\":999944,\"origin_slot\":0,\"target_id\":999942,\"target_slot\":0,\"type\":\"AUDIO\"},{\"id\":999903,\"origin_id\":999941,\"origin_slot\":0,\"target_id\":999940,\"target_slot\":0,\"type\":\"AUDIO\"},{\"id\":999902,\"origin_id\":999934,\"origin_slot\":0,\"target_id\":999933,\"target_slot\":0,\"type\":\"AUDIO\"},{\"id\":999901,\"origin_id\":999932,\"origin_slot\":0,\"target_id\":999931,\"target_slot\":0,\"type\":\"AUDIO\"},{\"id\":999900,\"origin_id\":999930,\"origin_slot\":0,\"target_id\":999929,\"target_slot\":0,\"type\":\"AUDIO\"},{\"id\":999899,\"origin_id\":999939,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":2,\"type\":\"VIDEO\"},{\"id\":999898,\"origin_id\":999936,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":3,\"type\":\"VIDEO\"},{\"id\":999897,\"origin_id\":999942,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":4,\"type\":\"AUDIO\"},{\"id\":999896,\"origin_id\":999940,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":5,\"type\":\"AUDIO\"},{\"id\":999895,\"origin_id\":999933,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":6,\"type\":\"AUDIO\"},{\"id\":999894,\"origin_id\":999931,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":7,\"type\":\"AUDIO\"},{\"id\":999893,\"origin_id\":999929,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":8,\"type\":\"AUDIO\"},{\"id\":999890,\"origin_id\":-10,\"origin_slot\":0,\"target_id\":999945,\"target_slot\":0,\"type\":\"BOOLEAN\"},{\"id\":999889,\"origin_id\":-10,\"origin_slot\":1,\"target_id\":999935,\"target_slot\":0,\"type\":\"BOOLEAN\"},{\"id\":999888,\"origin_id\":-10,\"origin_slot\":2,\"target_id\":999938,\"target_slot\":0,\"type\":\"BOOLEAN\"},{\"id\":999892,\"origin_id\":999943,\"origin_slot\":0,\"target_id\":999939,\"target_slot\":0,\"type\":\"VIDEO\"},{\"id\":999891,\"origin_id\":999937,\"origin_slot\":0,\"target_id\":999936,\"target_slot\":0,\"type\":\"VIDEO\"}],\"extra\":{\"workflowRendererVersion\":\"LG\"}}",
+      "Node name for S&R": "A001_SubgraphNode",
+      "promoted_widgets_json": "[{\"name\":\"switch\",\"nodeId\":\"999945\",\"widgetName\":\"switch\"},{\"name\":\"switch_1\",\"nodeId\":\"999935\",\"widgetName\":\"switch\"},{\"name\":\"switch_2\",\"nodeId\":\"999938\",\"widgetName\":\"switch\"}]",
+      "a001_widgets_hidden": true
+    },
+    "widgets_values": [
+      true,
+      false,
+      false,
+      0
+    ],
+    "widgets_values_named": {
+      "switch": true,
+      "switch_1": false,
+      "switch_2": false,
+      "xzg_a001_grid_anchor": 0
+    }
+  }
+}

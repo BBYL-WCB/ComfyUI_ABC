@@ -1,0 +1,110 @@
+{
+  "format": "a001_camera_snapshot",
+  "version": 2,
+  "capturedAt": 1790966791184,
+  "node": {
+    "type": "A001_SubgraphNode",
+    "size": [
+      373.21639218119986,
+      447
+    ],
+    "flags": {},
+    "order": 3,
+    "mode": 0,
+    "inputs": [
+      {
+        "label": "text",
+        "localized_name": "text",
+        "name": "text",
+        "type": "STRING",
+        "widget": {
+          "name": "text"
+        },
+        "link": null
+      },
+      {
+        "label": "宽高比",
+        "localized_name": "aspect_ratio",
+        "name": "aspect_ratio",
+        "type": "COMBO",
+        "widget": {
+          "name": "aspect_ratio"
+        },
+        "link": null
+      },
+      {
+        "label": "megapixels",
+        "localized_name": "megapixels",
+        "name": "megapixels",
+        "type": "FLOAT",
+        "widget": {
+          "name": "megapixels"
+        },
+        "link": null
+      }
+    ],
+    "outputs": [
+      {
+        "label": "images",
+        "localized_name": "images",
+        "name": "images",
+        "type": "IMAGE",
+        "pos": [
+          373.21636063120343,
+          186.00757125565295
+        ],
+        "links": null
+      }
+    ],
+    "title": "A003_Qwen Image 2.1(文生图)",
+    "properties": {
+      "Node name for S&R": "A001_SubgraphNode",
+      "promoted_widgets_json": "[{\"name\":\"text\",\"nodeId\":\"364668\",\"widgetName\":\"prompt\"},{\"name\":\"aspect_ratio\",\"nodeId\":\"364673\",\"widgetName\":\"aspect_ratio\"},{\"name\":\"megapixels\",\"nodeId\":\"364673\",\"widgetName\":\"megapixels\"}]",
+      "a001_widgets_hidden": true,
+      "a001_widgets_hidden_restore": {
+        "w": 379.71875,
+        "h": 445.40625,
+        "widgetsH": 69
+      },
+      "a001_prompt_docs": {
+        "text": {
+          "v": 1,
+          "text": "\n",
+          "parts": [
+            {
+              "type": "text",
+              "text": "\n"
+            }
+          ],
+          "view": "structured"
+        }
+      },
+      "subgraph_data_json": "{\"id\":\"81fb2cd7-9776-4696-8585-d3979bb123e4\",\"version\":1,\"state\":{\"lastGroupId\":18,\"lastNodeId\":364733,\"lastLinkId\":966386,\"lastRerouteId\":187},\"revision\":0,\"config\":{},\"name\":\"A003_Qwen Image 2.1:文生图\",\"description\":\"容器节点的内部子图空间\",\"inputNode\":{\"id\":-10,\"bounding\":[181.42716176251784,106.8024485308684,128,107.99999999999999]},\"outputNode\":{\"id\":-20,\"bounding\":[3069.2835369195027,-70.48817994272831,128,68]},\"inputs\":[{\"id\":\"7f3661e4-0f2c-4a1a-9d69-e6331e2821ec\",\"name\":\"text\",\"type\":\"STRING\",\"linkIds\":[966300],\"label\":\"提示词\",\"pos\":[285.4271617625178,130.8024485308684]},{\"id\":\"5d385874-c296-4ae7-8083-5e65366ef0f9\",\"name\":\"aspect_ratio\",\"type\":\"COMBO\",\"linkIds\":[966304],\"label\":\"宽高比\",\"pos\":[285.4271617625178,150.8024485308684]},{\"id\":\"459bfcf9-2c23-4ca7-8300-4cf7a77aefa3\",\"name\":\"megapixels\",\"type\":\"FLOAT\",\"linkIds\":[966305],\"label\":\"图片尺寸系数\",\"pos\":[285.4271617625178,170.8024485308684]}],\"outputs\":[{\"id\":\"15ec944e-63cc-46d6-8e05-686764a3b4a3\",\"name\":\"images\",\"type\":\"IMAGE\",\"linkIds\":[966301],\"label\":\"图片01\",\"pos\":[3093.2835369195027,-46.48817994272831]}],\"widgets\":[],\"nodes\":[{\"id\":364664,\"type\":\"VAELoader\",\"pos\":[503.38440027879165,-320.8808860247589],\"size\":[510,70],\"flags\":{},\"order\":0,\"mode\":0,\"inputs\":[{\"label\":\"vae名称\",\"localized_name\":\"vae名称\",\"name\":\"vae_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"vae_name\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"VAE\",\"name\":\"VAE\",\"type\":\"VAE\",\"links\":[966298]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"VAELoader\",\"models\":[{\"name\":\"qwen_image_2.1_vae_bf16.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors\",\"directory\":\"vae\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen_image_2.1_vae_bf16.safetensors\"],\"widgets_values_named\":{\"vae_name\":\"002_Qwen-Image-2.1\\\\qwen_image_2.1_vae_bf16.safetensors\"}},{\"id\":364665,\"type\":\"UNETLoader\",\"pos\":[504.61546088485215,-181.84679511568112],\"size\":[510,90],\"flags\":{},\"order\":1,\"mode\":0,\"inputs\":[{\"label\":\"UNET名称\",\"localized_name\":\"UNet名称\",\"name\":\"unet_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"unet_name\"},\"link\":null},{\"label\":\"剪枝类型\",\"localized_name\":\"数据类型\",\"name\":\"weight_dtype\",\"type\":\"COMBO\",\"widget\":{\"name\":\"weight_dtype\"},\"link\":null}],\"outputs\":[{\"label\":\"模型\",\"localized_name\":\"模型\",\"name\":\"MODEL\",\"type\":\"MODEL\",\"links\":[966291]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"UNETLoader\",\"models\":[{\"name\":\"qwen_image_2.1_int8_convrot.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors\",\"directory\":\"diffusion_models\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen_image_2.1_bf16.safetensors\",\"default\"],\"widgets_values_named\":{\"unet_name\":\"002_Qwen-Image-2.1\\\\qwen_image_2.1_bf16.safetensors\",\"weight_dtype\":\"default\"}},{\"id\":364666,\"type\":\"CLIPLoader\",\"pos\":[504.61546088485215,-31.846795115680834],\"size\":[510,120],\"flags\":{},\"order\":2,\"mode\":0,\"inputs\":[{\"label\":\"CLIP名称\",\"localized_name\":\"CLIP名称\",\"name\":\"clip_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"clip_name\"},\"link\":null},{\"label\":\"类型\",\"localized_name\":\"类型\",\"name\":\"type\",\"type\":\"COMBO\",\"widget\":{\"name\":\"type\"},\"link\":null},{\"localized_name\":\"设备\",\"name\":\"device\",\"shape\":7,\"type\":\"COMBO\",\"widget\":{\"name\":\"device\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"CLIP\",\"name\":\"CLIP\",\"type\":\"CLIP\",\"links\":[966292]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"CLIPLoader\",\"models\":[{\"name\":\"qwen3vl_8b_bf16.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_bf16.safetensors\",\"directory\":\"text_encoders\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen3vl_8b_bf16.safetensors\",\"qwen_image\",\"default\"],\"widgets_values_named\":{\"clip_name\":\"002_Qwen-Image-2.1\\\\qwen3vl_8b_bf16.safetensors\",\"type\":\"qwen_image\",\"device\":\"default\"}},{\"id\":364667,\"type\":\"QwenImage21Cache\",\"pos\":[1110.9543914719993,-189.20619372809716],\"size\":[270,94],\"flags\":{},\"order\":3,\"mode\":0,\"inputs\":[{\"localized_name\":\"model\",\"name\":\"model\",\"type\":\"MODEL\",\"link\":966291},{\"localized_name\":\"device\",\"name\":\"device\",\"type\":\"COMBO\",\"widget\":{\"name\":\"device\"},\"link\":null},{\"localized_name\":\"dtype\",\"name\":\"dtype\",\"type\":\"COMBO\",\"widget\":{\"name\":\"dtype\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"模型\",\"name\":\"MODEL\",\"type\":\"MODEL\",\"links\":[966293]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"QwenImage21Cache\"},\"widgets_values\":[\"gpu\",\"default\"],\"widgets_values_named\":{\"device\":\"gpu\",\"dtype\":\"default\"}},{\"id\":364668,\"type\":\"TextEncodeQwenImage21\",\"pos\":[1114.892596991002,-32.08039547354565],\"size\":[496.5625,418.078125],\"flags\":{},\"order\":4,\"mode\":0,\"inputs\":[{\"localized_name\":\"clip\",\"name\":\"clip\",\"type\":\"CLIP\",\"link\":966292},{\"localized_name\":\"image_1\",\"name\":\"images.image_1\",\"shape\":7,\"type\":\"IMAGE\",\"link\":null},{\"localized_name\":\"vae\",\"name\":\"vae\",\"shape\":7,\"type\":\"VAE\",\"link\":null},{\"localized_name\":\"正面提示词\",\"name\":\"prompt\",\"type\":\"STRING\",\"widget\":{\"name\":\"prompt\"},\"link\":966300},{\"localized_name\":\"负面提示词\",\"name\":\"negative_prompt\",\"type\":\"STRING\",\"widget\":{\"name\":\"negative_prompt\"},\"link\":null},{\"localized_name\":\"分辨率\",\"name\":\"resolution\",\"type\":\"INT\",\"widget\":{\"name\":\"resolution\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"positive\",\"name\":\"positive\",\"type\":\"CONDITIONING\",\"links\":[966294]},{\"localized_name\":\"negative\",\"name\":\"negative\",\"type\":\"CONDITIONING\",\"links\":[966295]},{\"localized_name\":\"latent\",\"name\":\"latent\",\"type\":\"LATENT\",\"links\":[]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"TextEncodeQwenImage21\"},\"widgets_values\":[\"\\n\",\"\",1024],\"widgets_values_named\":{\"prompt\":\"\\n\",\"negative_prompt\":\"\",\"resolution\":1024}},{\"id\":364669,\"type\":\"EmptyLatentImage\",\"pos\":[1302.3542491505355,458.8072890150851],\"size\":[300,122],\"flags\":{},\"order\":5,\"mode\":0,\"inputs\":[{\"label\":\"宽度\",\"localized_name\":\"宽度\",\"name\":\"width\",\"type\":\"INT\",\"widget\":{\"name\":\"width\"},\"link\":966302},{\"label\":\"高度\",\"localized_name\":\"高度\",\"name\":\"height\",\"type\":\"INT\",\"widget\":{\"name\":\"height\"},\"link\":966303},{\"label\":\"批次数量\",\"localized_name\":\"批量大小\",\"name\":\"batch_size\",\"type\":\"INT\",\"widget\":{\"name\":\"batch_size\"},\"link\":null}],\"outputs\":[{\"label\":\"Latent\",\"localized_name\":\"Latent\",\"name\":\"LATENT\",\"type\":\"LATENT\",\"links\":[966296]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"EmptyLatentImage\"},\"widgets_values\":[1024,1024,1],\"widgets_values_named\":{\"width\":1024,\"height\":1024,\"batch_size\":1}},{\"id\":364670,\"type\":\"KSampler\",\"pos\":[1897.2824123053247,-63.7061085008213],\"size\":[270,270],\"flags\":{},\"order\":6,\"mode\":0,\"inputs\":[{\"label\":\"模型\",\"localized_name\":\"模型\",\"name\":\"model\",\"type\":\"MODEL\",\"link\":966293},{\"label\":\"正面条件\",\"localized_name\":\"正面条件\",\"name\":\"positive\",\"type\":\"CONDITIONING\",\"link\":966294},{\"label\":\"负面条件\",\"localized_name\":\"负面条件\",\"name\":\"negative\",\"type\":\"CONDITIONING\",\"link\":966295},{\"label\":\"Latent\",\"localized_name\":\"Latent图像\",\"name\":\"latent_image\",\"type\":\"LATENT\",\"link\":966296},{\"label\":\"随机种\",\"localized_name\":\"种子\",\"name\":\"seed\",\"type\":\"INT\",\"widget\":{\"name\":\"seed\"},\"link\":null},{\"label\":\"步数\",\"localized_name\":\"步数\",\"name\":\"steps\",\"type\":\"INT\",\"widget\":{\"name\":\"steps\"},\"link\":null},{\"label\":\"CFG\",\"localized_name\":\"cfg\",\"name\":\"cfg\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"cfg\"},\"link\":null},{\"label\":\"采样器\",\"localized_name\":\"采样器名称\",\"name\":\"sampler_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"sampler_name\"},\"link\":null},{\"label\":\"调度器\",\"localized_name\":\"调度器\",\"name\":\"scheduler\",\"type\":\"COMBO\",\"widget\":{\"name\":\"scheduler\"},\"link\":null},{\"label\":\"降噪\",\"localized_name\":\"降噪\",\"name\":\"denoise\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"denoise\"},\"link\":null}],\"outputs\":[{\"label\":\"Latent\",\"localized_name\":\"Latent\",\"name\":\"LATENT\",\"type\":\"LATENT\",\"links\":[966297]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"KSampler\"},\"widgets_values\":[1108782160469442,\"randomize\",25,1,\"euler\",\"simple\",1],\"widgets_values_named\":{\"seed\":1108782160469442,\"control_after_generate\":\"randomize\",\"steps\":25,\"cfg\":1,\"sampler_name\":\"euler\",\"scheduler\":\"simple\",\"denoise\":1}},{\"id\":364671,\"type\":\"VAEDecode\",\"pos\":[2239.539678424315,-65.51942536098295],\"size\":[230,60],\"flags\":{},\"order\":7,\"mode\":0,\"inputs\":[{\"label\":\"Latent\",\"localized_name\":\"Latent\",\"name\":\"samples\",\"type\":\"LATENT\",\"link\":966297},{\"label\":\"VAE\",\"localized_name\":\"vae\",\"name\":\"vae\",\"type\":\"VAE\",\"link\":966298}],\"outputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"IMAGE\",\"type\":\"IMAGE\",\"links\":[966299]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"VAEDecode\"}},{\"id\":364672,\"type\":\"SaveImage\",\"pos\":[2503.5106587011837,-66.2716759184932],\"size\":[420,500],\"flags\":{},\"order\":8,\"mode\":0,\"inputs\":[{\"label\":\"图像组\",\"localized_name\":\"图片\",\"name\":\"images\",\"type\":\"IMAGE\",\"link\":966299},{\"label\":\"文件名前缀\",\"localized_name\":\"文件名前缀\",\"name\":\"filename_prefix\",\"type\":\"STRING\",\"widget\":{\"name\":\"filename_prefix\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"images\",\"name\":\"images\",\"type\":\"IMAGE\",\"links\":[966301]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.3.75\",\"Node name for S&R\":\"SaveImage\"},\"widgets_values\":[\"001_图像/ComfyUI\"],\"widgets_values_named\":{\"filename_prefix\":\"001_图像/ComfyUI\"}},{\"id\":364673,\"type\":\"ResolutionSelector\",\"pos\":[632.9141877515717,436.9247810143326],\"size\":[300,194],\"flags\":{},\"order\":9,\"mode\":0,\"showAdvanced\":true,\"inputs\":[{\"label\":\"宽高比\",\"localized_name\":\"宽高比\",\"name\":\"aspect_ratio\",\"type\":\"COMBO\",\"widget\":{\"name\":\"aspect_ratio\"},\"link\":966304},{\"label\":\"百万像素\",\"localized_name\":\"百万像素\",\"name\":\"megapixels\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"megapixels\"},\"link\":966305},{\"localized_name\":\"倍数\",\"name\":\"multiple\",\"type\":\"INT\",\"widget\":{\"name\":\"multiple\"},\"link\":null},{\"localized_name\":\"preview\",\"name\":\"preview\",\"shape\":7,\"type\":\"RESOLUTION_PREVIEW\",\"widget\":{\"name\":\"preview\"},\"link\":null}],\"outputs\":[{\"label\":\"宽度\",\"localized_name\":\"宽度\",\"name\":\"width\",\"type\":\"INT\",\"links\":[966302]},{\"label\":\"高度\",\"localized_name\":\"高度\",\"name\":\"height\",\"type\":\"INT\",\"links\":[966303]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"ResolutionSelector\"},\"widgets_values\":[\"1:1 (Square)\",2,8],\"widgets_values_named\":{\"aspect_ratio\":\"1:1 (Square)\",\"megapixels\":2,\"multiple\":8}}],\"groups\":[{\"id\":13,\"title\":\"A003_Qwen Image 2.1:文生图\",\"bounding\":[410.3016371386632,-445.51474465627444,2593.581621562431,1145.1925063541375],\"color\":\"#3f789e\",\"flags\":{}}],\"links\":[{\"id\":966291,\"origin_id\":364665,\"origin_slot\":0,\"target_id\":364667,\"target_slot\":0,\"type\":\"MODEL\"},{\"id\":966292,\"origin_id\":364666,\"origin_slot\":0,\"target_id\":364668,\"target_slot\":0,\"type\":\"CLIP\"},{\"id\":966293,\"origin_id\":364667,\"origin_slot\":0,\"target_id\":364670,\"target_slot\":0,\"type\":\"MODEL\"},{\"id\":966294,\"origin_id\":364668,\"origin_slot\":0,\"target_id\":364670,\"target_slot\":1,\"type\":\"CONDITIONING\"},{\"id\":966295,\"origin_id\":364668,\"origin_slot\":1,\"target_id\":364670,\"target_slot\":2,\"type\":\"CONDITIONING\"},{\"id\":966296,\"origin_id\":364669,\"origin_slot\":0,\"target_id\":364670,\"target_slot\":3,\"type\":\"LATENT\"},{\"id\":966297,\"origin_id\":364670,\"origin_slot\":0,\"target_id\":364671,\"target_slot\":0,\"type\":\"LATENT\"},{\"id\":966298,\"origin_id\":364664,\"origin_slot\":0,\"target_id\":364671,\"target_slot\":1,\"type\":\"VAE\",\"parentId\":165},{\"id\":966299,\"origin_id\":364671,\"origin_slot\":0,\"target_id\":364672,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":966300,\"origin_id\":-10,\"origin_slot\":0,\"target_id\":364668,\"target_slot\":3,\"type\":\"STRING\"},{\"id\":966301,\"origin_id\":364672,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":966302,\"origin_id\":364673,\"origin_slot\":0,\"target_id\":364669,\"target_slot\":0,\"type\":\"INT\"},{\"id\":966303,\"origin_id\":364673,\"origin_slot\":1,\"target_id\":364669,\"target_slot\":1,\"type\":\"INT\"},{\"id\":966304,\"origin_id\":-10,\"origin_slot\":1,\"target_id\":364673,\"target_slot\":0,\"type\":\"COMBO\"},{\"id\":966305,\"origin_id\":-10,\"origin_slot\":2,\"target_id\":364673,\"target_slot\":1,\"type\":\"FLOAT\"}],\"reroutes\":[{\"id\":164,\"pos\":[2194.963287920833,-280.56706816941033],\"linkIds\":[966298]},{\"id\":165,\"parentId\":164,\"pos\":[2203.0748365968575,-33.033604454365104],\"linkIds\":[966298]}],\"extra\":{\"workflowRendererVersion\":\"LG\"}}",
+      "a001SliderRanges": {
+        "megapixels": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "a001_prompt_editor_heights": {
+        "text": 80
+      },
+      "a001_textarea_heights": {
+        "0": 80
+      }
+    },
+    "widgets_values": [
+      "\n",
+      "1:1 (Square)",
+      2,
+      0
+    ],
+    "widgets_values_named": {
+      "text": "\n",
+      "aspect_ratio": "1:1 (Square)",
+      "megapixels": 2,
+      "xzg_a001_grid_anchor": 0
+    }
+  }
+}

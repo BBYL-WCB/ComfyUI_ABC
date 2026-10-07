@@ -1,0 +1,207 @@
+{
+  "format": "a001_camera_snapshot",
+  "version": 2,
+  "capturedAt": 1790968223239,
+  "node": {
+    "type": "A001_SubgraphNode",
+    "size": [
+      385.48258631682586,
+      454
+    ],
+    "flags": {},
+    "order": 7,
+    "mode": 0,
+    "inputs": [
+      {
+        "label": "图像01",
+        "localized_name": "images",
+        "name": "images",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像02",
+        "localized_name": "images.image_2",
+        "name": "images.image_2",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像03",
+        "localized_name": "images.image_3",
+        "name": "images.image_3",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像04",
+        "localized_name": "images.image_4",
+        "name": "images.image_4",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像05",
+        "localized_name": "images.image_5",
+        "name": "images.image_5",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像06",
+        "localized_name": "images.image_6",
+        "name": "images.image_6",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像07",
+        "localized_name": "images.image_7",
+        "name": "images.image_7",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像08",
+        "localized_name": "images.image_8",
+        "name": "images.image_8",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "图像09",
+        "localized_name": "images.image_9",
+        "name": "images.image_9",
+        "type": "IMAGE",
+        "pos": [
+          -1.3872129331541374e-05,
+          190.00800376925739
+        ],
+        "link": null
+      },
+      {
+        "label": "提示词",
+        "localized_name": "prompt",
+        "name": "prompt",
+        "type": "STRING",
+        "widget": {
+          "name": "prompt"
+        },
+        "link": null
+      },
+      {
+        "label": "最长边尺寸",
+        "localized_name": "value",
+        "name": "value",
+        "type": "FLOAT",
+        "widget": {
+          "name": "value"
+        },
+        "link": null
+      }
+    ],
+    "outputs": [
+      {
+        "label": "images",
+        "localized_name": "images",
+        "name": "images",
+        "type": "IMAGE",
+        "pos": [
+          385.48259758793097,
+          190.00800376925739
+        ],
+        "links": null
+      },
+      {
+        "label": "images_1",
+        "localized_name": "images_1",
+        "name": "images_1",
+        "type": "IMAGE",
+        "pos": [
+          385.48259758793097,
+          190.00800376925739
+        ],
+        "links": null
+      }
+    ],
+    "title": "A004_QwenImage-2.1(图像编辑)",
+    "properties": {
+      "subgraph_data_json": "{\"id\":\"2e2ed500-fb01-4891-bd4e-fbbe2cb78d14\",\"version\":1,\"state\":{\"lastGroupId\":8,\"lastNodeId\":365121,\"lastLinkId\":967255,\"lastRerouteId\":109},\"revision\":0,\"config\":{},\"name\":\"A004_QwenImage-2.1(图像编辑)\",\"description\":\"容器节点的内部子图空间\",\"inputNode\":{\"id\":-10,\"bounding\":[209.50929740500513,13.19532972257768,128,268]},\"outputNode\":{\"id\":-20,\"bounding\":[3501.2040346850595,-14.088755504212578,128,88]},\"inputs\":[{\"id\":\"6602a38f-357c-4a45-a833-da80400e885b\",\"name\":\"images\",\"type\":\"IMAGE\",\"linkIds\":[967186],\"label\":\"图像01\",\"pos\":[313.5092974050051,37.19532972257768]},{\"id\":\"06885487-5f30-4dfa-9253-b7eb83f92660\",\"name\":\"images.image_2\",\"type\":\"IMAGE\",\"linkIds\":[967187],\"label\":\"图像02\",\"pos\":[313.5092974050051,57.19532972257768]},{\"id\":\"204d1b86-89c8-4ec7-bdbd-280bd400d975\",\"name\":\"images.image_3\",\"type\":\"IMAGE\",\"linkIds\":[967188],\"label\":\"图像03\",\"pos\":[313.5092974050051,77.19532972257768]},{\"id\":\"c8d45a76-43a4-4a52-9c49-fd68f134322f\",\"name\":\"images.image_4\",\"type\":\"IMAGE\",\"linkIds\":[967189],\"label\":\"图像04\",\"pos\":[313.5092974050051,97.19532972257768]},{\"id\":\"a2f06f12-35fb-45bd-b4e2-e77baf7ae7ba\",\"name\":\"images.image_5\",\"type\":\"IMAGE\",\"linkIds\":[967190],\"label\":\"图像05\",\"pos\":[313.5092974050051,117.19532972257768]},{\"id\":\"46d56347-4e5e-4185-9bcb-1f0649d07a7c\",\"name\":\"images.image_6\",\"type\":\"IMAGE\",\"linkIds\":[967191],\"label\":\"图像06\",\"pos\":[313.5092974050051,137.1953297225777]},{\"id\":\"bb7e8d4e-f3b6-411c-bcf2-014b4955f307\",\"name\":\"images.image_7\",\"type\":\"IMAGE\",\"linkIds\":[967192],\"label\":\"图像07\",\"pos\":[313.5092974050051,157.1953297225777]},{\"id\":\"8e60e02b-2203-43d6-ac27-24c3dbc0f7a6\",\"name\":\"images.image_8\",\"type\":\"IMAGE\",\"linkIds\":[967193],\"label\":\"图像08\",\"pos\":[313.5092974050051,177.1953297225777]},{\"id\":\"b3852383-b389-4b62-bdb2-7474c18680cb\",\"name\":\"images.image_9\",\"type\":\"IMAGE\",\"linkIds\":[967194],\"label\":\"图像09\",\"pos\":[313.5092974050051,197.1953297225777]},{\"id\":\"24b829eb-c92b-4c39-863e-e7b392cef199\",\"name\":\"prompt\",\"type\":\"STRING\",\"linkIds\":[967195],\"label\":\"提示词\",\"pos\":[313.5092974050051,217.1953297225777]},{\"id\":\"5b8e6170-c64c-482b-a153-7e6091dd73b4\",\"name\":\"value\",\"type\":\"FLOAT\",\"linkIds\":[967196],\"label\":\"最长边尺寸\",\"pos\":[313.5092974050051,237.1953297225777]}],\"outputs\":[{\"id\":\"38cb4d39-05df-4353-91f4-d6c7a8741668\",\"name\":\"images\",\"type\":\"IMAGE\",\"linkIds\":[967179],\"pos\":[3525.2040346850595,9.911244495787422]},{\"id\":\"edccb048-07a3-4ff0-bfad-57954101b8dc\",\"name\":\"images_1\",\"type\":\"IMAGE\",\"linkIds\":[967180],\"pos\":[3525.2040346850595,29.91124449578742]}],\"widgets\":[],\"nodes\":[{\"id\":365084,\"type\":\"VAELoader\",\"pos\":[484.8234063069592,-356.7401314829992],\"size\":[510,70],\"flags\":{},\"order\":0,\"mode\":0,\"inputs\":[{\"label\":\"vae名称\",\"localized_name\":\"vae名称\",\"name\":\"vae_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"vae_name\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"VAE\",\"name\":\"VAE\",\"type\":\"VAE\",\"links\":[967176,967183]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"VAELoader\",\"models\":[{\"name\":\"qwen_image_2.1_vae_bf16.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors\",\"directory\":\"vae\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen_image_2.1_vae_bf16.safetensors\"],\"widgets_values_named\":{\"vae_name\":\"002_Qwen-Image-2.1\\\\qwen_image_2.1_vae_bf16.safetensors\"}},{\"id\":365085,\"type\":\"UNETLoader\",\"pos\":[488.9192805613038,-233.83166765279074],\"size\":[510,90],\"flags\":{},\"order\":1,\"mode\":0,\"inputs\":[{\"label\":\"UNET名称\",\"localized_name\":\"UNet名称\",\"name\":\"unet_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"unet_name\"},\"link\":null},{\"label\":\"剪枝类型\",\"localized_name\":\"数据类型\",\"name\":\"weight_dtype\",\"type\":\"COMBO\",\"widget\":{\"name\":\"weight_dtype\"},\"link\":null}],\"outputs\":[{\"label\":\"模型\",\"localized_name\":\"模型\",\"name\":\"MODEL\",\"type\":\"MODEL\",\"links\":[967170]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"UNETLoader\",\"models\":[{\"name\":\"qwen_image_2.1_int8_convrot.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors\",\"directory\":\"diffusion_models\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen_image_2.1_bf16.safetensors\",\"default\"],\"widgets_values_named\":{\"unet_name\":\"002_Qwen-Image-2.1\\\\qwen_image_2.1_bf16.safetensors\",\"weight_dtype\":\"default\"}},{\"id\":365086,\"type\":\"CLIPLoader\",\"pos\":[490.2807580994613,-92.79790836896409],\"size\":[509.984375,118],\"flags\":{},\"order\":2,\"mode\":0,\"inputs\":[{\"label\":\"CLIP名称\",\"localized_name\":\"CLIP名称\",\"name\":\"clip_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"clip_name\"},\"link\":null},{\"label\":\"类型\",\"localized_name\":\"类型\",\"name\":\"type\",\"type\":\"COMBO\",\"widget\":{\"name\":\"type\"},\"link\":null},{\"localized_name\":\"设备\",\"name\":\"device\",\"shape\":7,\"type\":\"COMBO\",\"widget\":{\"name\":\"device\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"CLIP\",\"name\":\"CLIP\",\"type\":\"CLIP\",\"links\":[967181]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"CLIPLoader\",\"models\":[{\"name\":\"qwen3vl_8b_bf16.safetensors\",\"url\":\"https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_bf16.safetensors\",\"directory\":\"text_encoders\"}]},\"widgets_values\":[\"002_Qwen-Image-2.1\\\\qwen3vl_8b_bf16.safetensors\",\"qwen_image\",\"default\"],\"widgets_values_named\":{\"clip_name\":\"002_Qwen-Image-2.1\\\\qwen3vl_8b_bf16.safetensors\",\"type\":\"qwen_image\",\"device\":\"default\"}},{\"id\":365087,\"type\":\"ImageScaleToMaxDimension\",\"pos\":[855.7045177256313,346.6025181233828],\"size\":[225,94],\"flags\":{},\"order\":4,\"mode\":0,\"inputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"image\",\"type\":\"IMAGE\",\"link\":967186},{\"label\":\"提升方法\",\"localized_name\":\"放大方法\",\"name\":\"upscale_method\",\"type\":\"COMBO\",\"widget\":{\"name\":\"upscale_method\"},\"link\":null},{\"label\":\"最长边\",\"localized_name\":\"最大尺寸\",\"name\":\"largest_size\",\"type\":\"INT\",\"widget\":{\"name\":\"largest_size\"},\"link\":967185}],\"outputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"IMAGE\",\"type\":\"IMAGE\",\"links\":[967178,967182]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.6.0\",\"Node name for S&R\":\"ImageScaleToMaxDimension\"},\"widgets_values\":[\"area\",1024],\"widgets_values_named\":{\"upscale_method\":\"area\",\"largest_size\":1024}},{\"id\":365088,\"type\":\"QwenImage21Cache\",\"pos\":[1211.3095120381208,-236.79651382280375],\"size\":[270,94],\"flags\":{},\"order\":3,\"mode\":0,\"inputs\":[{\"localized_name\":\"model\",\"name\":\"model\",\"type\":\"MODEL\",\"link\":967170},{\"localized_name\":\"device\",\"name\":\"device\",\"type\":\"COMBO\",\"widget\":{\"name\":\"device\"},\"link\":null},{\"localized_name\":\"dtype\",\"name\":\"dtype\",\"type\":\"COMBO\",\"widget\":{\"name\":\"dtype\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"模型\",\"name\":\"MODEL\",\"type\":\"MODEL\",\"links\":[967171]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"QwenImage21Cache\"},\"widgets_values\":[\"gpu\",\"default\"],\"widgets_values_named\":{\"device\":\"gpu\",\"dtype\":\"default\"}},{\"id\":365089,\"type\":\"TextEncodeQwenImage21\",\"pos\":[1215.9781459860383,16.214658793766674],\"size\":[496.40625,426],\"flags\":{},\"order\":5,\"mode\":0,\"inputs\":[{\"label\":\"CLIP\",\"localized_name\":\"clip\",\"name\":\"clip\",\"type\":\"CLIP\",\"link\":967181},{\"localized_name\":\"image_1\",\"name\":\"images.image_1\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967182},{\"label\":\"VAE\",\"localized_name\":\"vae\",\"name\":\"vae\",\"shape\":7,\"type\":\"VAE\",\"link\":967183},{\"label\":\"正面提示词\",\"localized_name\":\"正面提示词\",\"name\":\"prompt\",\"type\":\"STRING\",\"widget\":{\"name\":\"prompt\"},\"link\":967195},{\"label\":\"负面提示词\",\"localized_name\":\"负面提示词\",\"name\":\"negative_prompt\",\"type\":\"STRING\",\"widget\":{\"name\":\"negative_prompt\"},\"link\":null},{\"label\":\"分辨率\",\"localized_name\":\"分辨率\",\"name\":\"resolution\",\"type\":\"INT\",\"widget\":{\"name\":\"resolution\"},\"link\":null},{\"localized_name\":\"image_5\",\"name\":\"images.image_5\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967190},{\"localized_name\":\"image_6\",\"name\":\"images.image_6\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967191},{\"localized_name\":\"image_7\",\"name\":\"images.image_7\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967192},{\"localized_name\":\"image_8\",\"name\":\"images.image_8\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967193},{\"localized_name\":\"image_9\",\"name\":\"images.image_9\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967194},{\"localized_name\":\"image_10\",\"name\":\"images.image_10\",\"shape\":7,\"type\":\"IMAGE\",\"link\":null},{\"localized_name\":\"image_11\",\"name\":\"images.image_11\",\"shape\":7,\"type\":\"IMAGE\",\"link\":null},{\"localized_name\":\"image_2\",\"name\":\"images.image_2\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967187},{\"localized_name\":\"image_3\",\"name\":\"images.image_3\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967188},{\"localized_name\":\"image_4\",\"name\":\"images.image_4\",\"shape\":7,\"type\":\"IMAGE\",\"link\":967189}],\"outputs\":[{\"label\":\"正面提示词\",\"localized_name\":\"positive\",\"name\":\"positive\",\"type\":\"CONDITIONING\",\"links\":[967172]},{\"label\":\"负面提示词\",\"localized_name\":\"negative\",\"name\":\"negative\",\"type\":\"CONDITIONING\",\"links\":[967173]},{\"localized_name\":\"latent\",\"name\":\"latent\",\"type\":\"LATENT\",\"links\":[967174]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"TextEncodeQwenImage21\"},\"widgets_values\":[\"\",\"\",1024],\"widgets_values_named\":{\"prompt\":\"\",\"negative_prompt\":\"\",\"resolution\":1024}},{\"id\":365090,\"type\":\"KSampler\",\"pos\":[1770.8481953658063,-4.790672399843233],\"size\":[270,270],\"flags\":{},\"order\":6,\"mode\":0,\"inputs\":[{\"label\":\"模型\",\"localized_name\":\"模型\",\"name\":\"model\",\"type\":\"MODEL\",\"link\":967171},{\"label\":\"正面条件\",\"localized_name\":\"正面条件\",\"name\":\"positive\",\"type\":\"CONDITIONING\",\"link\":967172},{\"label\":\"负面条件\",\"localized_name\":\"负面条件\",\"name\":\"negative\",\"type\":\"CONDITIONING\",\"link\":967173},{\"label\":\"Latent\",\"localized_name\":\"Latent图像\",\"name\":\"latent_image\",\"type\":\"LATENT\",\"link\":967174},{\"label\":\"随机种\",\"localized_name\":\"种子\",\"name\":\"seed\",\"type\":\"INT\",\"widget\":{\"name\":\"seed\"},\"link\":null},{\"label\":\"步数\",\"localized_name\":\"步数\",\"name\":\"steps\",\"type\":\"INT\",\"widget\":{\"name\":\"steps\"},\"link\":null},{\"label\":\"CFG\",\"localized_name\":\"cfg\",\"name\":\"cfg\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"cfg\"},\"link\":null},{\"label\":\"采样器\",\"localized_name\":\"采样器名称\",\"name\":\"sampler_name\",\"type\":\"COMBO\",\"widget\":{\"name\":\"sampler_name\"},\"link\":null},{\"label\":\"调度器\",\"localized_name\":\"调度器\",\"name\":\"scheduler\",\"type\":\"COMBO\",\"widget\":{\"name\":\"scheduler\"},\"link\":null},{\"label\":\"降噪\",\"localized_name\":\"降噪\",\"name\":\"denoise\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"denoise\"},\"link\":null}],\"outputs\":[{\"label\":\"Latent\",\"localized_name\":\"Latent\",\"name\":\"LATENT\",\"type\":\"LATENT\",\"links\":[967175]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"KSampler\"},\"widgets_values\":[1108782160469442,\"randomize\",25,1,\"euler\",\"simple\",1],\"widgets_values_named\":{\"seed\":1108782160469442,\"control_after_generate\":\"randomize\",\"steps\":25,\"cfg\":1,\"sampler_name\":\"euler\",\"scheduler\":\"simple\",\"denoise\":1}},{\"id\":365091,\"type\":\"VAEDecode\",\"pos\":[2115.9693610037903,-6.008621208424929],\"size\":[230,60],\"flags\":{},\"order\":7,\"mode\":0,\"inputs\":[{\"label\":\"Latent\",\"localized_name\":\"Latent\",\"name\":\"samples\",\"type\":\"LATENT\",\"link\":967175},{\"label\":\"VAE\",\"localized_name\":\"vae\",\"name\":\"vae\",\"type\":\"VAE\",\"link\":967176}],\"outputs\":[{\"label\":\"图像\",\"localized_name\":\"图像\",\"name\":\"IMAGE\",\"type\":\"IMAGE\",\"links\":[967177]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"VAEDecode\"}},{\"id\":365092,\"type\":\"SaveImage\",\"pos\":[2414.6428029560457,-10.925167166981684],\"size\":[420,500],\"flags\":{},\"order\":8,\"mode\":0,\"inputs\":[{\"label\":\"图像组\",\"localized_name\":\"图片\",\"name\":\"images\",\"type\":\"IMAGE\",\"link\":967177},{\"label\":\"文件名前缀\",\"localized_name\":\"文件名前缀\",\"name\":\"filename_prefix\",\"type\":\"STRING\",\"widget\":{\"name\":\"filename_prefix\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"images\",\"name\":\"images\",\"type\":\"IMAGE\",\"links\":[967179]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.3.75\",\"Node name for S&R\":\"SaveImage\"},\"widgets_values\":[\"001_图像编辑-2/ComfyUI\"],\"widgets_values_named\":{\"filename_prefix\":\"001_图像编辑-2/ComfyUI\"}},{\"id\":365093,\"type\":\"PreviewImage\",\"pos\":[2917.437377582747,-366.0765975782681],\"size\":[225,38],\"flags\":{},\"order\":9,\"mode\":0,\"inputs\":[{\"label\":\"图像组\",\"localized_name\":\"图像\",\"name\":\"images\",\"type\":\"IMAGE\",\"link\":967178}],\"outputs\":[{\"localized_name\":\"images\",\"name\":\"images\",\"type\":\"IMAGE\",\"links\":[967180]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.37.2\",\"Node name for S&R\":\"PreviewImage\"}},{\"id\":365094,\"type\":\"PrimitiveFloat\",\"pos\":[325.9330485903046,380.24534539726744],\"size\":[225,65.9999988004248],\"flags\":{},\"order\":10,\"mode\":0,\"inputs\":[{\"label\":\"值\",\"localized_name\":\"值\",\"name\":\"value\",\"type\":\"FLOAT\",\"widget\":{\"name\":\"value\"},\"link\":967196}],\"outputs\":[{\"label\":\"浮点\",\"localized_name\":\"浮点\",\"name\":\"FLOAT\",\"type\":\"FLOAT\",\"links\":[967184]}],\"title\":\"最长边尺寸\",\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.38.2\",\"Node name for S&R\":\"PrimitiveFloat\"},\"widgets_values\":[1024],\"widgets_values_named\":{\"value\":1024}},{\"id\":365095,\"type\":\"ComfyMathExpression\",\"pos\":[581.6942944458493,384.3771886051856],\"size\":[225,145.999971256834],\"flags\":{},\"order\":11,\"mode\":0,\"inputs\":[{\"localized_name\":\"a\",\"name\":\"values.a\",\"type\":\"FLOAT,INT,BOOLEAN\",\"link\":967184},{\"localized_name\":\"b\",\"name\":\"values.b\",\"shape\":7,\"type\":\"FLOAT,INT,BOOLEAN\",\"link\":null},{\"localized_name\":\"表达式\",\"name\":\"expression\",\"type\":\"STRING\",\"widget\":{\"name\":\"expression\"},\"link\":null}],\"outputs\":[{\"localized_name\":\"浮点\",\"name\":\"FLOAT\",\"type\":\"FLOAT\",\"links\":[]},{\"label\":\"整数\",\"localized_name\":\"整数\",\"name\":\"INT\",\"type\":\"INT\",\"links\":[967185]},{\"localized_name\":\"布尔值\",\"name\":\"BOOL\",\"type\":\"BOOLEAN\",\"links\":[]}],\"properties\":{\"cnr_id\":\"comfy-core\",\"ver\":\"0.38.2\",\"Node name for S&R\":\"ComfyMathExpression\"},\"widgets_values\":[\"a \"],\"widgets_values_named\":{\"expression\":\"a \"}}],\"groups\":[{\"id\":6,\"title\":\"B002_QwenImage-2.1(图像编辑)\",\"bounding\":[414.55477918746504,-567.0746516854861,3040.6409915125673,1130.254872097777],\"color\":\"#3f789e\",\"flags\":{}}],\"links\":[{\"id\":967170,\"origin_id\":365085,\"origin_slot\":0,\"target_id\":365088,\"target_slot\":0,\"type\":\"MODEL\"},{\"id\":967171,\"origin_id\":365088,\"origin_slot\":0,\"target_id\":365090,\"target_slot\":0,\"type\":\"MODEL\"},{\"id\":967172,\"origin_id\":365089,\"origin_slot\":0,\"target_id\":365090,\"target_slot\":1,\"type\":\"CONDITIONING\"},{\"id\":967173,\"origin_id\":365089,\"origin_slot\":1,\"target_id\":365090,\"target_slot\":2,\"type\":\"CONDITIONING\"},{\"id\":967174,\"origin_id\":365089,\"origin_slot\":2,\"target_id\":365090,\"target_slot\":3,\"type\":\"LATENT\"},{\"id\":967175,\"origin_id\":365090,\"origin_slot\":0,\"target_id\":365091,\"target_slot\":0,\"type\":\"LATENT\"},{\"id\":967176,\"origin_id\":365084,\"origin_slot\":0,\"target_id\":365091,\"target_slot\":1,\"type\":\"VAE\",\"parentId\":83},{\"id\":967177,\"origin_id\":365091,\"origin_slot\":0,\"target_id\":365092,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":967178,\"origin_id\":365087,\"origin_slot\":0,\"target_id\":365093,\"target_slot\":0,\"type\":\"IMAGE\",\"parentId\":81},{\"id\":967179,\"origin_id\":365092,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":0,\"type\":\"IMAGE\"},{\"id\":967180,\"origin_id\":365093,\"origin_slot\":0,\"target_id\":-20,\"target_slot\":1,\"type\":\"IMAGE\"},{\"id\":967185,\"origin_id\":365095,\"origin_slot\":1,\"target_id\":365087,\"target_slot\":2,\"type\":\"INT\"},{\"id\":967186,\"origin_id\":-10,\"origin_slot\":0,\"target_id\":365087,\"target_slot\":0,\"type\":\"IMAGE\",\"parentId\":85},{\"id\":967196,\"origin_id\":-10,\"origin_slot\":10,\"target_id\":365094,\"target_slot\":0,\"type\":\"FLOAT\"},{\"id\":967181,\"origin_id\":365086,\"origin_slot\":0,\"target_id\":365089,\"target_slot\":0,\"type\":\"CLIP\"},{\"id\":967182,\"origin_id\":365087,\"origin_slot\":0,\"target_id\":365089,\"target_slot\":1,\"type\":\"IMAGE\",\"parentId\":80},{\"id\":967183,\"origin_id\":365084,\"origin_slot\":0,\"target_id\":365089,\"target_slot\":2,\"type\":\"VAE\",\"parentId\":79},{\"id\":967195,\"origin_id\":-10,\"origin_slot\":9,\"target_id\":365089,\"target_slot\":3,\"type\":\"STRING\"},{\"id\":967190,\"origin_id\":-10,\"origin_slot\":4,\"target_id\":365089,\"target_slot\":6,\"type\":\"IMAGE\"},{\"id\":967191,\"origin_id\":-10,\"origin_slot\":5,\"target_id\":365089,\"target_slot\":7,\"type\":\"IMAGE\"},{\"id\":967192,\"origin_id\":-10,\"origin_slot\":6,\"target_id\":365089,\"target_slot\":8,\"type\":\"IMAGE\"},{\"id\":967193,\"origin_id\":-10,\"origin_slot\":7,\"target_id\":365089,\"target_slot\":9,\"type\":\"IMAGE\"},{\"id\":967194,\"origin_id\":-10,\"origin_slot\":8,\"target_id\":365089,\"target_slot\":10,\"type\":\"IMAGE\"},{\"id\":967187,\"origin_id\":-10,\"origin_slot\":1,\"target_id\":365089,\"target_slot\":13,\"type\":\"IMAGE\"},{\"id\":967188,\"origin_id\":-10,\"origin_slot\":2,\"target_id\":365089,\"target_slot\":14,\"type\":\"IMAGE\"},{\"id\":967189,\"origin_id\":-10,\"origin_slot\":3,\"target_id\":365089,\"target_slot\":15,\"type\":\"IMAGE\"},{\"id\":967184,\"origin_id\":365094,\"origin_slot\":0,\"target_id\":365095,\"target_slot\":0,\"type\":\"FLOAT\"}],\"floatingLinks\":[{\"id\":967197,\"origin_id\":-10,\"origin_slot\":0,\"target_id\":-1,\"target_slot\":-1,\"type\":\"STRING\",\"parentId\":86}],\"reroutes\":[{\"id\":78,\"pos\":[1150.3128027644339,-335.73229256749994],\"linkIds\":[967176,967183]},{\"id\":79,\"parentId\":78,\"pos\":[1156.9067883083042,241.59455898197427],\"linkIds\":[967183]},{\"id\":80,\"parentId\":87,\"pos\":[1091.2489205682073,47.256475398033245],\"linkIds\":[967178,967182]},{\"id\":81,\"parentId\":80,\"pos\":[1074.9755548114326,-379.33321620940785],\"linkIds\":[967178]},{\"id\":82,\"parentId\":78,\"pos\":[2071.612765694999,-307.0017884804152],\"linkIds\":[967176]},{\"id\":83,\"parentId\":82,\"pos\":[2079.5045191763306,20.92480583013098],\"linkIds\":[967176]},{\"id\":84,\"pos\":[758.3403318054709,57.52773870464831],\"linkIds\":[967186]},{\"id\":85,\"parentId\":84,\"pos\":[830.5319293107295,355.26512805691556],\"linkIds\":[967186]},{\"id\":86,\"pos\":[442.5021089146953,37.629131446322546],\"linkIds\":[],\"floating\":{\"slotType\":\"output\"}},{\"id\":87,\"pos\":[1129.7952301339467,359.6026763176579],\"linkIds\":[967178,967182]}],\"extra\":{\"workflowRendererVersion\":\"LG\"}}",
+      "Node name for S&R": "A001_SubgraphNode",
+      "promoted_widgets_json": "[{\"name\":\"prompt\",\"nodeId\":\"365089\",\"widgetName\":\"prompt\"},{\"name\":\"value\",\"nodeId\":\"365094\",\"widgetName\":\"value\"},{\"name\":\"int\",\"nodeId\":\"365096\",\"widgetName\":\"int\"}]",
+      "a001_widgets_hidden": true,
+      "a001_widgets_hidden_restore": {
+        "w": 380.3125,
+        "h": 449.921875,
+        "widgetsH": 91
+      },
+      "a001SliderRanges": {
+        "value": {
+          "min": 256,
+          "max": 2048,
+          "step": 256
+        }
+      },
+      "a001_prompt_docs": {
+        "text": {
+          "v": 1,
+          "text": "",
+          "parts": [],
+          "view": "structured"
+        },
+        "prompt": {
+          "v": 1,
+          "text": "",
+          "parts": [],
+          "view": "structured"
+        }
+      },
+      "a001_prompt_editor_heights": {
+        "text": 80,
+        "prompt": 86
+      }
+    },
+    "widgets_values": [
+      "",
+      1024,
+      0
+    ],
+    "widgets_values_named": {
+      "prompt": "",
+      "value": 1024,
+      "xzg_a001_grid_anchor": 0
+    }
+  }
+}

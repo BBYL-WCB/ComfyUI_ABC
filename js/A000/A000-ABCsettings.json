@@ -1,0 +1,94 @@
+{
+  "hidden": {
+    "ab": [
+      "t:管理器",
+      "y:显示收藏列表-自定义节点",
+      "y:分享",
+      "bc:batch",
+      "t:ComfyTV",
+      "y:Share",
+      "t:Manager",
+      "y:Show favorite custom node list",
+      "p:翻译"
+    ],
+    "sb": [
+      "资产",
+      "模型",
+      "应用",
+      "说明",
+      "快捷键",
+      "模型库",
+      "模板",
+      "帮助中心",
+      "底部面板",
+      "键盘快捷键",
+      "ComfyTV Bot",
+      "ComfyTV — 工作流配置与素材库",
+      "ComfyTV"
+    ],
+    "sg": [
+      "HotReload",
+      "🪛Crystools工具组",
+      "3D",
+      "🌐Language翻译语言",
+      "遮罩编辑器",
+      "关于",
+      "扩展",
+      "快捷键",
+      "对齐布局 (AlignLayout)",
+      "用户",
+      "Crystools",
+      "KJNodes",
+      "🛠️KJ工具节点",
+      "🌐 翻译设置",
+      "✨提示词小助手"
+    ],
+    "tp": [
+      "006_CS-H3-Multimodal-Director",
+      "☁️API LLM大语言模型通用链路",
+      "节点基础",
+      "合作伙伴节点",
+      "3D模型",
+      "音频",
+      "视频工具",
+      "品牌与设计",
+      "角色与时尚",
+      "产品与广告",
+      "Popular",
+      "图像工具",
+      "矢量",
+      "005_CS-H3-Multimodal-Director"
+    ]
+  },
+  "fold": {
+    "UI": "1",
+    "AB": "1",
+    "SB": "1",
+    "SG": "1",
+    "TP": "1"
+  },
+  "tpl": [
+    "所有模板",
+    "Popular",
+    "产品与广告",
+    "角色与时尚",
+    "品牌与设计",
+    "图像",
+    "图像工具",
+    "视频",
+    "视频工具",
+    "音频",
+    "3D模型",
+    "矢量",
+    "☁️API LLM大语言模型通用链路",
+    "节点基础",
+    "合作伙伴节点",
+    "005_CS-H3-Multimodal-Director"
+  ],
+  "source": {
+    "enabled": true
+  },
+  "titleBadge": {
+    "enabled": true
+  }
+}
