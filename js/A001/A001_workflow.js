@@ -33,6 +33,9 @@ import { injectStyleOnce } from "../A000/A000_DomStyle.js";
 import { alog, safeCall, uuidv4, isConstId, showA001Toast } from "./A001_shared.js?v=20261007a";
 import { ensureSubgraph, detachSlotSync } from "./A001_SubgraphNode.js?v=20261007a";
 import { refreshA001Preview } from "./A001_preview.js?v=20261007a";
+/* ★ 高度模型基线对齐：还原时把「记录高」采纳为高度模型新基线，
+ *  修复「第一次还原高度不对、第二次才对」（详见 A001_HeightModel.js 该函数头注）。 */
+import { adoptA001ExternalHeight } from "./A001_HeightModel.js?v=20261008a";
 
 /** 节点尺寸下限（与官方 LGraphNode 的 minWidth/minHeight 约定一致）。 */
 const A001_MIN_W = 210;
@@ -422,6 +425,11 @@ function applySnapshotToNode(node, snapshot, restoreTitle) {
         const rh = Number(nd.size[1]);
         if (Number.isFinite(rw) && Number.isFinite(rh)) {
             try { node.setSize([Math.max(rw, A001_MIN_W), Math.max(rh, A001_MIN_H)]); } catch (e) { /* 忽略 */ }
+            /* ★★ 关键：把「记录高」同步采纳为高度模型的新基线。
+             *   否则紧随的 ResizeObserver 会把「节点高变了但 chrome 没变」误判成用户拉伸
+             *   → sample() 在 DOM 过渡期采到污染值 → apply() 反手覆盖掉刚写好的记录高
+             *   （即「第一次还原高度不对、第二次才对」的根因，详见 adoptA001ExternalHeight）。 */
+            safeCall(() => adoptA001ExternalHeight(node, rh), undefined, "还原: 对齐高度模型基线");
         }
     }
     if (nd.flags && typeof nd.flags === "object") node.flags = nd.flags;

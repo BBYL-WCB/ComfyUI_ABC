@@ -157,6 +157,47 @@ import {
 /* re-export：保持对外 API 不变（NODE_TYPE 与 UUID 工具被外部模块引用）。 */
 export { NODE_TYPE, TAG, uuidv4, alog, safeCall, dirtyCanvas, getNodeGraph, isNodeInGraph };
 
+/**
+ * 旧界面（Nodes 1.0 / LiteGraph Canvas）降级提示。
+ * A001 的整套增强外观都建立在 Nodes 2.0 的 Vue DOM（.lg-node[data-node-id]）之上，
+ * 旧界面下会全部失效、节点上什么都不显示。这里只做一件事：探测不到该 DOM 时，
+ * 在节点上画一行文字说明原因。延时一帧判定，避开「Vue 尚未渲染出节点 DOM」的时序窗口。
+ */
+function showA001LegacyHint(node) {
+    if (!node || node._a001LegacyHint || node._a001LegacyDone) return;
+    let tries = 0;
+    const check = () => {
+        if (node._a001LegacyHint) return;
+        // 已能查到 Nodes 2.0 的节点 DOM → 正常界面，不提示。
+        if (document.querySelector("[data-node-id]")) { node._a001LegacyDone = true; return; }
+        // DOM 可能只是尚未渲染：短暂重试若干帧再下结论，避免误判 Nodes 2.0。
+        if (tries++ < 10) { setTimeout(() => safeCall(check, undefined, "旧界面提示判定"), 100); return; }
+        node._a001LegacyHint = true;
+        const prev = node.onDrawForeground;
+        node.onDrawForeground = function (ctx) {
+            if (typeof prev === "function") {
+                safeCall(() => prev.apply(this, arguments), undefined, "旧界面提示: 既有onDrawForeground");
+            }
+            const w = Number(this.size?.[0]) || 220;
+            const top = Number(window.LiteGraph?.NODE_TITLE_HEIGHT) || 30;
+            const h = Number(this.size?.[1]) || 120;
+            ctx.save();
+            ctx.fillStyle = "#e6e6e6";
+            ctx.font = "13px system-ui, sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("请开启新版界面(Nodes 2.0)使用本节点", w / 2, top + (h - top) / 2);
+            ctx.restore();
+        };
+        safeCall(() => node.setDirtyCanvas?.(true, true), undefined, "旧界面提示重绘");
+    };
+    if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(() => safeCall(check, undefined, "旧界面提示判定"));
+    } else {
+        safeCall(check, undefined, "旧界面提示判定");
+    }
+}
+
 /** 取 widgetValueStore（Pinia）。ComfyUI 把它挂在 window.comfyAPI 上，
  * 但不同版本命名不一，这里按优先级逐个探测，全部失败则返回 null（调用方降级）。
  *
@@ -1927,6 +1968,9 @@ app.registerExtension({
          * 然后建子图/挂插槽同步/重建提升，最后补挂外观面板。 */
         const onNodeCreated = nodeType.prototype.onNodeCreated;
         nodeType.prototype.onNodeCreated = function () {
+            /* ★ 旧界面(Nodes 1.0)降级提示：探测不到 Nodes 2.0 的节点 DOM 时画一行提示文字。
+             *  Nodes 2.0 下无副作用（查到 DOM 即不做任何事）。 */
+            safeCall(() => showA001LegacyHint(this), undefined, "旧界面提示");
             safeCall(() => installA001WidgetProjection(this), undefined, "安装提升控件投影");
             if (onNodeCreated) onNodeCreated.apply(this, arguments);
             /* ★ 默认宽度兜底：nodeCreated 钩子在部分路径不触发（如程序化建节点），

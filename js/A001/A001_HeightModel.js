@@ -696,6 +696,47 @@ export function resyncA001SizeLock(node) {
 }
 
 /**
+ * ★★ 外部把节点高显式设为 height 后，让高度模型把该高度采纳为**新基线**。
+ *
+ * 【为什么需要（记录/还原「第一次高度不对、第二次才对」的根因修复）】
+ *   还原快照时 workflow 直接 `node.setSize(记录高)`，但高度模型仍是 live 的，
+ *   其内部 wanted/applied 还是**还原前**的旧值。紧接 ResizeObserver 回调：
+ *   chrome 没变、节点高变了 → 被 onA001SizeLockChange 判成「用户拉伸」→ 走 sample()，
+ *   而 sample() 会把「预览框当前高度」重采为 wanted —— 此刻 DOM 尚未重排到记录高度，
+ *   采到的是**过渡值** → wanted 被污染 → 随后的 apply() 按污染 wanted 重算 node.size，
+ *   把刚写好的记录高覆盖掉（表现为「第一次还原高度不对」）。
+ *   第二次还原时 DOM 已是稳定态，sample() 采到正确值，故「第二次才对」。
+ *
+ * 【修法】还原后立刻把基线换血对齐记录高，并开冻结窗挡住过渡期采样：
+ *   · applied = height          —— 声明「节点高已是 height」，不再被误判为用户拉伸；
+ *   · wanted  = height − chrome + offset —— 由等式 node.size[1] = chrome + wanted − offset
+ *     反解出「记录高对应的预览框高度」，使 apply() 重算结果恒等于 height（幂等）；
+ *   · _rebuildUntil = now + 冻结窗 —— 还原会触发 DOM 重建，期间 sample() 不得采信。
+ *
+ * 注：apply() 每次都会用**当前** chromeOf() 刷新 chrome 后再算，故此处用哪个 chrome
+ *   反解 wanted 不影响最终结果（等式自洽）；wanted 恒被 max 到 PREVIEW_MIN_H。
+ *
+ * @param {LGraphNode} node A001 节点
+ * @param {number} height 目标节点高（记录里的 size[1]）
+ */
+export function adoptA001ExternalHeight(node, height) {
+    const lock = node?._a001SizeLock;
+    const h = Number(height);
+    if (!lock || !Number.isFinite(h) || h <= 0) return;
+    /* 声明节点高已由外部设定：onA001SizeLockChange 的「节点高变了」判据据此不再触发采样。 */
+    lock.applied = h;
+    if (lock.offsetCaptured) {
+        const chrome = Number.isFinite(lock.chrome) && lock.chrome >= 0
+            ? lock.chrome
+            : safeCall(() => lock.chromeOf?.() ?? 0, 0, "反解 wanted: chrome");
+        lock.wanted = Math.max(A001_FRAME.PREVIEW_MIN_H, h - chrome + lock.offset);
+    }
+    /* 冻结窗：还原伴随 DOM 重建（子图重建 / 预览刷新），期间测量值不可信，
+     * 挡住 sample() 采到「旧 chrome × 新 node.size」的过渡值。 */
+    if (lock.wanted > 0) lock._rebuildUntil = Date.now() + A001_REBUILD_FREEZE_MS;
+}
+
+/**
  * 一次「外部同步」：按与 onResize 相同的双判据处理（幂等）。
  *
  * ★★ 为什么必须在 DOM 稳定后跑（实测踩坑，勿删）：

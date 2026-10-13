@@ -57,7 +57,7 @@ import {
     startA001SizeLock,
     stopA001SizeLock,
     resyncA001SizeLock,
-} from "./A001_HeightModel.js?v=20261007a";
+} from "./A001_HeightModel.js?v=20261008a";
 /* ★ 端口：A001 的端口胶囊走独立实现（A001_port_capsule.js + A001_grid_anchor.js，
  *   均由 A001_SubgraphNode.js 装配），不使用公共模块 A000_Port.js 的端口条，
  *   故本模块不导入 floatPortRails / getPanelPortState 等成员。 */
